@@ -7,7 +7,16 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 
 const consentOptions: ConsentOptions = {
-    services: [{ id: 'myid', name: 'MyName', scripts: [{ id: 'main', src: 'https://mysciript.com/script.js' }] }],
+    services: [
+        {
+            id: 'myid',
+            name: 'MyName',
+            scripts: [
+                { id: 'external-script', src: 'https://myscript.com/script.js' },
+                { id: 'inline-code', code: `alert("I am a JavaScript code");` },
+            ],
+        },
+    ],
 };
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);

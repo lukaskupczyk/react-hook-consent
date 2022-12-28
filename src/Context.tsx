@@ -1,10 +1,13 @@
 import React from 'react';
 
+export type ScriptExternal = { id: string; src: string };
+export type ScriptCode = { id: string; code: string };
+
 export type ConsentOptions = {
     services: {
         id: string;
         name: string;
-        scripts?: { id: string; src?: string; code?: string }[];
+        scripts?: Array<ScriptExternal | ScriptCode>;
     }[];
 };
 
