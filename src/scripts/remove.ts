@@ -1,4 +1,4 @@
-import { idPrefix } from '../config';
+import { idPrefix } from '../utils/config';
 import { ConsentOptions } from '../Context';
 
 export function removeScripts(serviceId: string, scripts: ConsentOptions['services'][number]['scripts']) {

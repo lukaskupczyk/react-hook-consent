@@ -1,8 +1,8 @@
 import { useCallback } from 'react';
-import { deleteAllCookies } from '../delete-cookies';
+import { deleteAllCookies } from '../utils/delete-cookies';
 import { addScripts } from '../scripts/add';
 import { removeScripts } from '../scripts/remove';
-import { useConsent } from '../use-consent';
+import { useConsent } from '../useConsent';
 
 export function useConsentBannerActions() {
     const {

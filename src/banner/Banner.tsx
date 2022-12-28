@@ -1,4 +1,4 @@
-import { useConsent } from '../use-consent';
+import { useConsent } from '../useConsent';
 import { useConsentBannerActions } from './useConsentBannerActions';
 
 type ConsentBannerProps = {
