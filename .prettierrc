@@ -1,0 +1,20 @@
+{
+    "singleQuote": true,
+    "jsxSingleQuote": false,
+    "printWidth": 120,
+    "proseWrap": "preserve",
+    "trailingComma": "es5",
+    "endOfLine": "lf",
+    "tabWidth": 4,
+    "useTabs": false,
+    "semi": true,
+    "overrides": [
+        {
+            "files": ["*.yml", "*.yaml"],
+            "options": {
+                "singleQuote": false,
+                "tabWidth": 2
+            }
+        }
+    ]
+}

@@ -1,0 +1,17 @@
+{
+    "editor.rulers": [80, 120],
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    "prettier.enable": true,
+    "stylelint.enable": true,
+    "stylelint.validate": ["css", "scss"],
+    "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+    "css.validate": false,
+    "scss.validate": false,
+    "eslint.packageManager": "yarn",
+    "files.insertFinalNewline": true
+}

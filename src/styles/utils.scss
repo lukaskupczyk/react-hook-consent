@@ -1,0 +1,44 @@
+@use 'sass:math';
+
+/*
+* Convert px to rem
+*/
+@function px($value) {
+    @if unit($value) != '' {
+        @error "value is required to be unit-less";
+    }
+
+    @return math.div($value, 16) * 1rem;
+}
+
+/*
+* Breakpoints
+*/
+
+// Small devices
+@mixin sm {
+    @media (min-width: #{px(600)}) {
+        @content;
+    }
+}
+
+// Medium devices
+@mixin md {
+    @media (min-width: #{px(900)}) {
+        @content;
+    }
+}
+
+// Large devices (including scroll bar width)
+@mixin lg {
+    @media (min-width: #{px(1080 + 32)}) {
+        @content;
+    }
+}
+
+// Individual size
+@mixin min-width($width) {
+    @media (min-width: $width) {
+        @content;
+    }
+}

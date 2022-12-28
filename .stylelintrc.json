@@ -1,0 +1,13 @@
+{
+    "extends": [
+        "stylelint-config-standard-scss",
+        "stylelint-config-property-sort-order-smacss",
+        "stylelint-config-prettier"
+    ],
+    "overrides": [
+        {
+            "files": ["**/*.scss"],
+            "customSyntax": "postcss-scss"
+        }
+    ]
+}

@@ -1,0 +1,47 @@
+# workflow to publish on npm
+
+name: publish
+on:
+  # trigger on main branch
+  push:
+    branches: [main]
+
+  # allow manual dispatch
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      # checkout repo
+      - name: Git checkout
+        uses: actions/checkout@v2
+
+      # setup Node.js
+      - name: Set Node.js - v${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      # install dependencies
+      - name: Install dependencies
+        run: yarn
+
+        # run tests
+      - name: Run tests
+        run: yarn test
+
+      # build dist
+      - name: Build package
+        run: yarn build
+
+      # publish on npm
+      - uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
+          access: "public"
