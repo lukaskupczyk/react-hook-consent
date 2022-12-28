@@ -1,7 +1,11 @@
 import { useConsent } from '../use-consent';
 import { useConsentBannerActions } from './useConsentBannerActions';
 
-export function ConsentBanner() {
+type ConsentBannerProps = {
+    children?: React.ReactNode;
+};
+
+export function ConsentBanner({ children }: ConsentBannerProps) {
     const { showBanner } = useConsent();
     const { onDecline, onApprove } = useConsentBannerActions();
 
@@ -11,8 +15,14 @@ export function ConsentBanner() {
                 <div className="banner">
                     <div className="banner__content">
                         <div className="banner__content__message">
-                            We want to use cookies and external services to analyze and improve this website for you.
-                            You will find more details in our privacy policy.
+                            {children ? (
+                                children
+                            ) : (
+                                <>
+                                    We want to use cookies and external services to analyze and improve this website for
+                                    you. You will find more details in our privacy policy.
+                                </>
+                            )}
                         </div>
                         <button className="banner__content__decline" onClick={onDecline}>
                             Decline

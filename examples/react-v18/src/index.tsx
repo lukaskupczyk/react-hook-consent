@@ -16,7 +16,11 @@ root.render(
     <React.StrictMode>
         <ConsentProvider options={consentOptions}>
             <App />
-            <ConsentBanner />
+            <ConsentBanner>
+                <>
+                    Optional individual consent text including a <a href="test">link</a>
+                </>
+            </ConsentBanner>
         </ConsentProvider>
     </React.StrictMode>
 );
