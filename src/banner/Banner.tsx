@@ -12,9 +12,9 @@ export function ConsentBanner({ children }: ConsentBannerProps) {
     return (
         <>
             {showBanner ? (
-                <div className="banner">
-                    <div className="banner__content">
-                        <div className="banner__content__message">
+                <div className="rhc-banner">
+                    <div className="rhc-banner__content">
+                        <div className="rhc-banner__content__message">
                             {children ? (
                                 children
                             ) : (
@@ -24,10 +24,10 @@ export function ConsentBanner({ children }: ConsentBannerProps) {
                                 </>
                             )}
                         </div>
-                        <button className="banner__content__decline" onClick={onDecline}>
+                        <button className="rhc-banner__content__decline" onClick={onDecline}>
                             Decline
                         </button>
-                        <button className="banner__content__approve" onClick={onApprove}>
+                        <button className="rhc-banner__content__approve" onClick={onApprove}>
                             Approve
                         </button>
                     </div>

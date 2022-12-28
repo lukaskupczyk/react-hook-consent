@@ -1,11 +1,5 @@
-.banner {
+.rhc-banner {
     --text-primary: #000;
     --text-secondary: #757575;
-    --grey-20: #f7f7f7;
-}
-
-.banner[data-theme='dark'] {
-    --text-primary: #fff;
-    --text-secondary: #8a8a8a;
-    --grey-20: #1a1a1a;
+    --background: #f7f7f7;
 }
