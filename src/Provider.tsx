@@ -7,10 +7,10 @@ type ConsentProviderProps = {
 };
 
 export function ConsentProvider({ options, children }: ConsentProviderProps) {
-    const { consent, showBanner, setShowBanner, setConsent } = useConsentState(options);
+    const { consent, isBannerVisible, toggleBanner, setConsent } = useConsentState(options);
 
     return (
-        <ConsentContext.Provider value={{ consent, showBanner, setShowBanner, setConsent, options }}>
+        <ConsentContext.Provider value={{ consent, isBannerVisible, toggleBanner, setConsent, options }}>
             {children}
         </ConsentContext.Provider>
     );

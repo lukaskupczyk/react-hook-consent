@@ -15,16 +15,16 @@ export type Consent = string[];
 
 type ConsentContext = {
     consent: Consent;
-    showBanner: boolean;
-    setShowBanner: () => void;
+    isBannerVisible: boolean;
+    toggleBanner: () => void;
     setConsent: (consent: Consent) => void;
     options: ConsentOptions;
 };
 
 export const ConsentContext = React.createContext<ConsentContext>({
     consent: [],
-    showBanner: true,
-    setShowBanner: () => {},
+    isBannerVisible: true,
+    toggleBanner: () => {},
     setConsent: ([]) => {},
     options: { services: [] },
 });

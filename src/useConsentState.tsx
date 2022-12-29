@@ -5,13 +5,13 @@ import { localStorageKey } from './utils/config';
 import { getFromLocalStorage } from './utils/get-from-local-storage';
 
 export function useConsentState(options: ConsentOptions) {
-    const [state, setState] = useState<{ consent: Consent; showBanner: boolean }>({
+    const [state, setState] = useState<{ consent: Consent; isBannerVisible: boolean }>({
         consent: [],
-        showBanner: false,
+        isBannerVisible: false,
     });
 
     useEffect(() => {
-        const { consent, showBanner } = getFromLocalStorage();
+        const { consent, isBannerVisible } = getFromLocalStorage();
 
         options.services.forEach(({ id, scripts }) => {
             if (consent.includes(id)) {
@@ -19,20 +19,20 @@ export function useConsentState(options: ConsentOptions) {
             }
         });
 
-        setState({ consent, showBanner });
+        setState({ consent, isBannerVisible });
     }, [options.services]);
 
     const setConsent = useCallback((consent: string[]) => {
-        setState({ consent, showBanner: false });
+        setState({ consent, isBannerVisible: false });
 
         localStorage.setItem(`${localStorageKey}`, JSON.stringify({ consent }));
     }, []);
 
-    const setShowBanner = useCallback(() => {
+    const toggleBanner = useCallback(() => {
         setState((state) => {
-            return { ...state, showBanner: true };
+            return { ...state, isBannerVisible: !state.isBannerVisible };
         });
     }, []);
 
-    return { consent: state.consent, showBanner: state.showBanner, setShowBanner, setConsent };
+    return { consent: state.consent, isBannerVisible: state.isBannerVisible, toggleBanner, setConsent };
 }

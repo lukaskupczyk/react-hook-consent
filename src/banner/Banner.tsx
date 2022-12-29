@@ -6,12 +6,14 @@ type ConsentBannerProps = {
 };
 
 export function ConsentBanner({ children }: ConsentBannerProps) {
-    const { showBanner } = useConsent();
+    const { isBannerVisible } = useConsent();
     const { onDecline, onApprove } = useConsentBannerActions();
+
+    console.log(isBannerVisible);
 
     return (
         <>
-            {showBanner ? (
+            {isBannerVisible && (
                 <div className="rhc-banner">
                     <div className="rhc-banner__content">
                         <div className="rhc-banner__content__message">
@@ -32,7 +34,7 @@ export function ConsentBanner({ children }: ConsentBannerProps) {
                         </button>
                     </div>
                 </div>
-            ) : null}
+            )}
         </>
     );
 }
