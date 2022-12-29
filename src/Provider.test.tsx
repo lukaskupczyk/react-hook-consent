@@ -21,7 +21,7 @@ const TestingComponent = () => {
 };
 
 describe('<ConsentProvider />', () => {
-    test('expect show banner to be true', async () => {
+    test('expect banner to be visible', async () => {
         // ARRANGE
         render(
             <ConsentProvider options={{ services: [{ id: 'test', name: 'Test' }] }}>
@@ -33,7 +33,7 @@ describe('<ConsentProvider />', () => {
         expect(screen.getByTestId('show-banner')).toHaveTextContent('visible');
     });
 
-    test('expect show banner to be false', async () => {
+    test('expect banner to be hidden', async () => {
         // ARRANGE
         render(
             <ConsentProvider options={{ services: [] }}>
