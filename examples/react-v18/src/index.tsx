@@ -1,36 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { ConsentBanner, ConsentOptions, ConsentProvider } from 'react-hook-consent';
 import 'react-hook-consent/dist/styles/style.css';
 import App from './App';
+import { ConsentWrapper } from './ConsentWrapper';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-
-const consentOptions: ConsentOptions = {
-    services: [
-        {
-            id: 'myid',
-            name: 'MyName',
-            scripts: [
-                { id: 'external-script', src: 'https://myscript.com/script.js' },
-                { id: 'inline-code', code: `alert("I am a JavaScript code");` },
-            ],
-        },
-    ],
-};
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
 root.render(
     <React.StrictMode>
-        <ConsentProvider options={consentOptions}>
+        <ConsentWrapper>
             <App />
-            <ConsentBanner>
-                <>
-                    Optional individual consent text including a <a href="test">link</a>
-                </>
-            </ConsentBanner>
-        </ConsentProvider>
+        </ConsentWrapper>
     </React.StrictMode>
 );
 

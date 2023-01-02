@@ -1,4 +1,4 @@
 export { ConsentBanner } from './banner/Banner';
-export { ConsentContext, ConsentOptions } from './Context';
+export { ConsentContext, ConsentOptions, Theme } from './Context';
 export { ConsentProvider } from './Provider';
 export { useConsent } from './useConsent';

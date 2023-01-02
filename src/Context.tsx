@@ -2,6 +2,7 @@ import React from 'react';
 
 export type ScriptExternal = { id: string; src: string };
 export type ScriptCode = { id: string; code: string };
+export type Theme = 'light' | 'dark';
 
 export type ConsentOptions = {
     services: {
@@ -9,6 +10,7 @@ export type ConsentOptions = {
         name: string;
         scripts?: Array<ScriptExternal | ScriptCode>;
     }[];
+    theme?: Theme;
 };
 
 export type Consent = string[];
