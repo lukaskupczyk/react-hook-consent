@@ -1,5 +1,11 @@
-.rhc-banner {
+.rhc-banner-light {
     --text-primary: #000;
     --text-secondary: #757575;
     --background: #f7f7f7;
+}
+
+.rhc-banner-dark {
+    --text-primary: #f7f7f7;
+    --text-secondary: #8a8a8a;
+    --background: #1a1a1a;
 }

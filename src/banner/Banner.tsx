@@ -6,15 +6,16 @@ type ConsentBannerProps = {
 };
 
 export function ConsentBanner({ children }: ConsentBannerProps) {
-    const { isBannerVisible } = useConsent();
+    const {
+        isBannerVisible,
+        options: { theme },
+    } = useConsent();
     const { onDecline, onApprove } = useConsentBannerActions();
-
-    console.log(isBannerVisible);
 
     return (
         <>
             {isBannerVisible && (
-                <div className="rhc-banner">
+                <div className={theme === 'light' ? 'rhc-banner-light rhc-banner' : 'rhc-banner-dark rhc-banner'}>
                     <div className="rhc-banner__content">
                         <div className="rhc-banner__content__message">
                             {children ? (
