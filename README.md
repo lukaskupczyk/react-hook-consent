@@ -10,6 +10,7 @@ React consent management solution for cookies and (external) scripts.
 -   Optional Banner to approve / decline consent
 -   Persists the selection to local storage
 -   Ready for Next.js
+-   Dark and light mode
 
 ## Example
 
@@ -51,6 +52,7 @@ import { ConsentProvider } from 'react-hook-consent';
                 ],
             },
         ],
+        theme: 'light', // or 'dark'
     }}
 >
     <App />
