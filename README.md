@@ -16,7 +16,7 @@ React consent management solution for cookies and (external) scripts.
 
 Check out the [CodeSandbox](https://codesandbox.io/s/example-react18-7d1rcb) for a working example.
 
-More examples are included in the `examples` folder of the repository.
+More examples for React and Next.js are included in the `examples` folder of the repository.
 
 ## Installation
 
