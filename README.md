@@ -12,9 +12,11 @@ React consent management solution for cookies and (external) scripts.
 -   Ready for Next.js
 -   Dark and light mode
 
-## Example
+## Examples
 
-Working examples are provided in the `examples` folder.
+Check out the [CodeSandbox](https://codesandbox.io/s/example-react18-7d1rcb) for a working example.
+
+More examples are included in the `examples` folder of the repository.
 
 ## Installation
 
@@ -59,6 +61,35 @@ import { ConsentProvider } from 'react-hook-consent';
 </ConsentProvider>;
 // ...
 ```
+
+#### Options Prop
+
+| Name     | Type                    | Required | Description                                     | Default |
+| -------- | ----------------------- | -------- | ----------------------------------------------- | ------- |
+| services | ConsentOptionsService[] | yes      | The configuration of the services to be covered |         |
+| theme    | Theme                   |          | Configuration of light or dark theme            | dark    |
+
+The `services` array can be configured as follows:
+
+| Name    | Type                                | Required | Description                                  |
+| ------- | ----------------------------------- | -------- | -------------------------------------------- |
+| id      | string                              | yes      | A unique id for the service, e.g. 'myid'     |
+| name    | string                              | yes      | The name of the service, e.g. 'My ID'        |
+| scripts | Array<ScriptExternal \| ScriptCode> |          | External script or code to load upon consent |
+
+`ScriptExternal` has the following options:
+
+| Name | Type   | Required | Description                                                   |
+| ---- | ------ | -------- | ------------------------------------------------------------- |
+| id   | string | yes      | A unique id for the script, e.g. 'myscript'                   |
+| src  | string | yes      | The link to the script, e.g. 'https://myscript.com/script.js' |
+
+`ScriptCode` has the following options:
+
+| Name | Type   | Required | Description                                                        |
+| ---- | ------ | -------- | ------------------------------------------------------------------ |
+| id   | string | yes      | A unique id for the script, e.g. 'myscript'                        |
+| code | string | yes      | The js Code of the script, e.g. `alert("I am a JavaScript code");` |
 
 ### Banner
 
