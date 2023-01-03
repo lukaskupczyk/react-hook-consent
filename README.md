@@ -54,7 +54,7 @@ import { ConsentProvider } from 'react-hook-consent';
                 ],
             },
         ],
-        theme: 'light', // or 'dark'
+        theme: 'light',
     }}
 >
     <App />
@@ -114,6 +114,12 @@ import 'react-hook-consent/dist/styles/style.css';
 </ConsentBanner>
 ```
 
+#### Props
+
+| Name     | Type      | Required | Description         | Default                                                                                                                                     |
+| -------- | --------- | -------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| children | ReactNode |          | The consent message | We want to use cookies and external services to analyze and improve this website for you. You will find more details in our privacy policy. |
+
 ### Hooks
 
 Use the provided `useConsent` hook to access or update the current consent and show or hide the banner.
@@ -127,4 +133,14 @@ import { useConsent } from 'react-hook-consent';
 
 // ...
 const { consent, setConsent, isBannerVisible, toggleBanner } = useConsent();
+// ...
 ```
+
+#### Return
+
+| Object Name     | Type                       | Description                                         |
+| --------------- | -------------------------- | --------------------------------------------------- |
+| consent         | Consent                    | Services which have been consent to                 |
+| isBannerVisible | boolean                    | Indicates if consent banner is visible              |
+| toggleBanner    | () => void                 | Shows or hides the consent banner                   |
+| setConsent      | (consent: Consent) => void | Update consent by providing consent ids to be saved |
