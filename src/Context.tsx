@@ -4,12 +4,14 @@ export type ScriptExternal = { id: string; src: string };
 export type ScriptCode = { id: string; code: string };
 export type Theme = 'light' | 'dark';
 
+type ConsentOptionsService = {
+    id: string;
+    name: string;
+    scripts?: Array<ScriptExternal | ScriptCode>;
+};
+
 export type ConsentOptions = {
-    services: {
-        id: string;
-        name: string;
-        scripts?: Array<ScriptExternal | ScriptCode>;
-    }[];
+    services: ConsentOptionsService[];
     theme?: Theme;
 };
 
