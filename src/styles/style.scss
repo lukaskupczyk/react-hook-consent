@@ -97,12 +97,24 @@
         display: grid;
         box-sizing: border-box;
         grid-template-rows: min-content auto min-content;
-        width: calc(100% - px(48));
+        width: calc(100% - px(12));
         max-width: px(640);
-        height: calc(100% - px(48));
+        height: calc(100% - px(12));
         border-radius: px(8);
         background-color: var(--background);
-        box-shadow: 0 11px 32px 0 rgb(0 0 0 / 10%), 0 5px 12px -8px rgb(0 0 0 / 20%), 0 0 1px 0 rgb(0 0 0 / 20%);
+        box-shadow: 0 px(11) px(32) 0 rgb(0 0 0 / 10%), 0 px(5) px(12) -px(8) rgb(0 0 0 / 20%),
+            0 0 px(1) 0 rgb(0 0 0 / 20%);
+        color: var(--text-primary);
+
+        @include sm {
+            width: calc(100% - px(24));
+            height: calc(100% - px(24));
+        }
+
+        @include md {
+            width: calc(100% - px(48));
+            height: calc(100% - px(48));
+        }
 
         &__header {
             padding: px(24);
@@ -117,8 +129,29 @@
             padding: px(24);
             overflow-y: auto;
 
+            &::-webkit-scrollbar {
+                width: var(--scrollbar-size);
+                height: var(--scrollbar-size);
+            }
+
+            &::-webkit-scrollbar-thumb {
+                border-radius: var(--scrollbar-size);
+                background: var(--scrollbar-foreground-color);
+            }
+
+            &::-webkit-scrollbar-track {
+                border-radius: var(--scrollbar-size);
+                background: var(--scrollbar-background-color);
+            }
+
+            scrollbar-color: var(--scrollbar-foreground-color) var(--scrollbar-background-color);
+
             &__detail {
-                margin: px(36) 0;
+                margin: px(24) 0;
+
+                @include md {
+                    margin: px(36) 0;
+                }
 
                 &:first-of-type {
                     margin-top: 0;
@@ -141,9 +174,12 @@
 
         &__footer {
             display: grid;
-            grid-template-columns: 1fr 1fr 1.5fr;
             padding: px(24);
             gap: px(12);
+
+            @include md {
+                grid-template-columns: 1fr 1fr 1.5fr;
+            }
 
             &__secondary {
                 width: 100%;

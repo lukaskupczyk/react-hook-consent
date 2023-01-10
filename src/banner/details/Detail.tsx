@@ -19,7 +19,7 @@ export function ConsentBannerDetail({ onChange, service }: ConsentBannerDetailPr
     );
 
     return (
-        <div className="details__content__main__detail">
+        <div className="rhc-details__content__main__detail">
             <div className="rhc-details__content__main__detail__title">
                 <label className="rhc-details__content__main__detail__title__label" htmlFor={service.id}>
                     {service.name}
