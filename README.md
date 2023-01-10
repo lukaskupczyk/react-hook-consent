@@ -83,7 +83,7 @@ The `services` array can be configured as follows:
 | name    | string                              | yes      | The name of the service, e.g. 'My Service'                          |
 | name    | string                              |          | The description of the service, e.g. 'My ID is a tracking service.' |
 | scripts | Array<ScriptExternal \| ScriptCode> |          | External script or code to load upon consent                        |
-| scripts | Array<Cookie>                       |          | Configuration of cookies to delete them upon decline                |
+| cookies | Cookie[]                            |          | Configuration of cookies to delete them upon decline                |
 
 `ScriptExternal` has the following options:
 
