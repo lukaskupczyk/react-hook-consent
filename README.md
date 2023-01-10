@@ -2,15 +2,21 @@
 
 React consent management solution for cookies and (external) scripts.
 
+![Consent Banner](/assets/banner.png)
+
+![Consent Details](/assets/details.png)
+
 ## Features
 
 -   Provides the consent context to components
 -   Loads (external) scripts based on consent state
+-   Deletes cookies when consent declined
 -   Hook to retrieve and change the current consent
--   Optional Banner to approve / decline consent
+-   Optional Banner with detailed settings to approve / decline consent
 -   Persists the selection to local storage
 -   Ready for Next.js
 -   Dark and light mode
+-   Styling via css
 
 ## Examples
 
@@ -71,11 +77,13 @@ import { ConsentProvider } from 'react-hook-consent';
 
 The `services` array can be configured as follows:
 
-| Name    | Type                                | Required | Description                                  |
-| ------- | ----------------------------------- | -------- | -------------------------------------------- |
-| id      | string                              | yes      | A unique id for the service, e.g. 'myid'     |
-| name    | string                              | yes      | The name of the service, e.g. 'My ID'        |
-| scripts | Array<ScriptExternal \| ScriptCode> |          | External script or code to load upon consent |
+| Name    | Type                                | Required | Description                                                         |
+| ------- | ----------------------------------- | -------- | ------------------------------------------------------------------- |
+| id      | string                              | yes      | A unique id for the service, e.g. 'myid'                            |
+| name    | string                              | yes      | The name of the service, e.g. 'My Service'                          |
+| name    | string                              |          | The description of the service, e.g. 'My ID is a tracking service.' |
+| scripts | Array<ScriptExternal \| ScriptCode> |          | External script or code to load upon consent                        |
+| cookies | Cookie[]                            |          | Configuration of cookies to delete them upon decline                |
 
 `ScriptExternal` has the following options:
 
@@ -90,6 +98,12 @@ The `services` array can be configured as follows:
 | ---- | ------ | -------- | ------------------------------------------------------------------ |
 | id   | string | yes      | A unique id for the script, e.g. 'myscript'                        |
 | code | string | yes      | The js Code of the script, e.g. `alert("I am a JavaScript code");` |
+
+`Cookie` has the following options:
+
+| Name    | Type             | Required | Description                               |
+| ------- | ---------------- | -------- | ----------------------------------------- |
+| pattern | string \| RegExp | yes      | The name or a regex pattern of the cookie |
 
 ### Banner
 
@@ -138,9 +152,9 @@ const { consent, setConsent, isBannerVisible, toggleBanner } = useConsent();
 
 #### Return
 
-| Object Name     | Type                       | Description                                         |
-| --------------- | -------------------------- | --------------------------------------------------- |
-| consent         | Consent                    | Services which have been consent to                 |
-| isBannerVisible | boolean                    | Indicates if consent banner is visible              |
-| toggleBanner    | () => void                 | Shows or hides the consent banner                   |
-| setConsent      | (consent: Consent) => void | Update consent by providing consent ids to be saved |
+| Object Name     | Type                         | Description                                         |
+| --------------- | ---------------------------- | --------------------------------------------------- |
+| consent         | Consent[]                    | Services which have been consent to                 |
+| isBannerVisible | boolean                      | Indicates if consent banner is visible              |
+| toggleBanner    | () => void                   | Shows or hides the consent banner                   |
+| setConsent      | (consent: Consent[]) => void | Update consent by providing consent ids to be saved |
