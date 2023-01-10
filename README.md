@@ -58,6 +58,7 @@ import { ConsentProvider } from 'react-hook-consent';
                     { id: 'external-script', src: 'https://myscript.com/script.js' },
                     { id: 'inline-code', code: `alert("I am a JavaScript code");` },
                 ],
+                cookies: [{ pattern: 'cookie-name' }],
             },
         ],
         theme: 'light',
