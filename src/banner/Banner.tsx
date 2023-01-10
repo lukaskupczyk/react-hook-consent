@@ -1,4 +1,5 @@
 import { useConsent } from '../useConsent';
+import { ConsentBannerDetails } from './Details';
 import { useConsentBannerActions } from './useConsentBannerActions';
 
 type ConsentBannerProps = {
@@ -10,12 +11,12 @@ export function ConsentBanner({ children }: ConsentBannerProps) {
         isBannerVisible,
         options: { theme },
     } = useConsent();
-    const { onDecline, onApprove } = useConsentBannerActions();
+    const { onDecline, onApprove, onDetailsToggle, isDetailsVisible } = useConsentBannerActions();
 
     return (
         <>
-            {isBannerVisible && (
-                <div className={theme === 'light' ? 'rhc-banner-light rhc-banner' : 'rhc-banner-dark rhc-banner'}>
+            {isBannerVisible && !isDetailsVisible && (
+                <div className={`${theme === 'light' ? 'rhc-theme-light' : 'rhc-theme-dark'} rhc-banner`}>
                     <div className="rhc-banner__content">
                         <div className="rhc-banner__content__message">
                             {children ? (
@@ -27,15 +28,20 @@ export function ConsentBanner({ children }: ConsentBannerProps) {
                                 </>
                             )}
                         </div>
+                        <button className="rhc-banner__content__decline" onClick={onDetailsToggle}>
+                            Settings
+                        </button>
                         <button className="rhc-banner__content__decline" onClick={onDecline}>
                             Decline
                         </button>
-                        <button className="rhc-banner__content__approve" onClick={onApprove}>
+                        <button className="rhc-banner__content__approve" onClick={() => onApprove()}>
                             Approve
                         </button>
                     </div>
                 </div>
             )}
+
+            {isDetailsVisible && <ConsentBannerDetails onToggle={onDetailsToggle} />}
         </>
     );
 }

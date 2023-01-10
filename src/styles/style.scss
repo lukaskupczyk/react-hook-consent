@@ -1,5 +1,6 @@
 @import 'utils';
 @import 'variables';
+@import 'react-toggle/style.css';
 
 .rhc-banner {
     display: block;
@@ -21,7 +22,7 @@
         padding: 0 px(40);
 
         @include md {
-            grid-template-columns: 1fr px(200) px(200);
+            grid-template-columns: 1fr px(200) px(200) px(200);
         }
 
         &__message {
@@ -77,6 +78,109 @@
             &:hover {
                 border-color: var(--text-secondary);
                 background-color: var(--text-secondary);
+            }
+        }
+    }
+}
+
+.rhc-details {
+    display: flex;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+
+    &__content {
+        display: grid;
+        box-sizing: border-box;
+        grid-template-rows: min-content auto min-content;
+        width: calc(100% - px(48));
+        max-width: px(640);
+        height: calc(100% - px(48));
+        border-radius: px(8);
+        background-color: var(--background);
+        box-shadow: 0 11px 32px 0 rgb(0 0 0 / 10%), 0 5px 12px -8px rgb(0 0 0 / 20%), 0 0 1px 0 rgb(0 0 0 / 20%);
+
+        &__header {
+            padding: px(24);
+
+            h1 {
+                margin: 0;
+                font-size: medium;
+            }
+        }
+
+        &__main {
+            padding: px(24);
+            overflow-y: auto;
+
+            &__detail {
+                margin: px(36) 0;
+
+                &:first-of-type {
+                    margin-top: 0;
+                }
+
+                &__title {
+                    display: flex;
+                    justify-content: space-between;
+
+                    &__label {
+                        font-weight: bold;
+                    }
+                }
+
+                &__description {
+                    margin: px(8) 0;
+                }
+            }
+        }
+
+        &__footer {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1.5fr;
+            padding: px(24);
+            gap: px(12);
+
+            &__secondary {
+                width: 100%;
+                height: px(36);
+                margin: 0 auto;
+                padding: px(2);
+                transition: all 0.3s ease;
+                border: px(2) solid var(--text-primary);
+                border-radius: px(18);
+                background-color: var(--background);
+                color: var(--text-primary);
+                font-size: px(16);
+                cursor: pointer;
+
+                &:hover {
+                    border-color: var(--text-secondary);
+                    color: var(--text-secondary);
+                }
+            }
+
+            &__primary {
+                width: 100%;
+                height: px(36);
+                margin: 0 auto;
+                padding: px(2);
+                transition: all 0.3s ease;
+                border: px(2) solid var(--text-primary);
+                border-radius: px(18);
+                background-color: var(--text-primary);
+                color: var(--background);
+                font-size: px(16);
+                cursor: pointer;
+
+                &:hover {
+                    border-color: var(--text-secondary);
+                    background-color: var(--text-secondary);
+                }
             }
         }
     }

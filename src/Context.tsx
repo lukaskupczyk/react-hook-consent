@@ -2,12 +2,15 @@ import React from 'react';
 
 export type ScriptExternal = { id: string; src: string };
 export type ScriptCode = { id: string; code: string };
+export type Cookie = { pattern: string | RegExp };
 export type Theme = 'light' | 'dark';
 
-type ConsentOptionsService = {
+export type ConsentOptionsService = {
     id: string;
     name: string;
+    description?: string;
     scripts?: Array<ScriptExternal | ScriptCode>;
+    cookies?: Array<Cookie>;
 };
 
 export type ConsentOptions = {
@@ -15,13 +18,13 @@ export type ConsentOptions = {
     theme?: Theme;
 };
 
-export type Consent = string[];
+export type Consent = string;
 
 type ConsentContext = {
-    consent: Consent;
+    consent: Consent[];
     isBannerVisible: boolean;
     toggleBanner: () => void;
-    setConsent: (consent: Consent) => void;
+    setConsent: (consent: Consent[]) => void;
     options: ConsentOptions;
 };
 

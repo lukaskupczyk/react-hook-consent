@@ -1,8 +1,10 @@
-import { useCallback } from 'react';
-import { deleteAllCookies } from '../utils/delete-cookies';
-import { addScripts } from '../scripts/add';
-import { removeScripts } from '../scripts/remove';
+import { useCallback, useState } from 'react';
+import { Consent } from '../Context';
+import { addScripts } from '../services/scripts/add';
+import { removeScripts } from '../services/scripts/remove';
 import { useConsent } from '../useConsent';
+import { deleteAllCookies } from '../services/cookies/delete';
+import { removeServices } from '../services/remove-services';
 
 export function useConsentBannerActions() {
     const {
@@ -10,13 +12,26 @@ export function useConsentBannerActions() {
         options: { services },
     } = useConsent();
 
-    const onApprove = useCallback(() => {
-        services.forEach(({ id, scripts }) => {
-            addScripts(id, scripts);
-        });
+    const [showDetails, setShowDetails] = useState(false);
 
-        setConsent(services.map(({ id }) => id));
-    }, [services, setConsent]);
+    const onApprove = useCallback(
+        (approved?: Consent[]) => {
+            let selectedServices = services;
+
+            if (approved) {
+                selectedServices = selectedServices.filter((service) => approved.includes(service.id));
+
+                removeServices(services, approved);
+            }
+
+            selectedServices.forEach(({ id, scripts }) => {
+                addScripts(id, scripts);
+            });
+
+            setConsent(selectedServices.map(({ id }) => id));
+        },
+        [services, setConsent]
+    );
 
     const onDecline = useCallback(() => {
         services.forEach(({ id, scripts }) => {
@@ -28,5 +43,9 @@ export function useConsentBannerActions() {
         setConsent([]);
     }, [services, setConsent]);
 
-    return { onDecline, onApprove };
+    const onDetailsToggle = useCallback(() => {
+        setShowDetails((details) => !details);
+    }, []);
+
+    return { onDecline, onApprove, onDetailsToggle, isDetailsVisible: showDetails };
 }
