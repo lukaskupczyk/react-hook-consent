@@ -26,7 +26,9 @@ export function ConsentBannerDetail({ onChange, service }: ConsentBannerDetailPr
                 </label>
                 <Toggle id={service.id} defaultChecked={consent.includes(service.id)} onChange={handleChange} />
             </div>
-            {service.description && <p>{service.description}</p>}
+            {service.description && (
+                <p className="rhc-details__content__main__detail__description">{service.description}</p>
+            )}
         </div>
     );
 }

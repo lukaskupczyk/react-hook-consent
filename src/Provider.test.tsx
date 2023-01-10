@@ -10,7 +10,7 @@ const TestingComponent = () => {
 
     const handleClick = useCallback(() => {
         toggleBanner();
-    }, []);
+    }, [toggleBanner]);
 
     return (
         <>

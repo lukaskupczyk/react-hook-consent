@@ -1,5 +1,5 @@
-import { ConsentOptions } from '../../Context';
 import { idPrefix } from '../../config';
+import { ConsentOptions } from '../../Context';
 import { addCodeScript } from './add/code-script';
 import { addExternalScript } from './add/external-script';
 import { isScriptCode } from './is-script-code';
@@ -19,11 +19,11 @@ export function addScripts(serviceId: string, scripts: ConsentOptions['services'
         }
 
         if (isScriptExternal(script)) {
-            addExternalScript(script, elementId);
+            addExternalScript(script.src, elementId);
         }
 
         if (isScriptCode(script)) {
-            addCodeScript(script, elementId);
+            addCodeScript(script.code, elementId);
         }
     }
 }

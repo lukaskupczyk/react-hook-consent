@@ -1,9 +1,10 @@
-import { useState, useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import { Consent } from '../../Context';
 import { useConsent } from '../../useConsent';
 
 export function useSelectedServices() {
     const { consent } = useConsent();
+
     const [selectedServices, setSelectedServices] = useState<Consent[]>(consent);
 
     const handleSelectedServiceChange = useCallback((service: Consent, selected: boolean) => {

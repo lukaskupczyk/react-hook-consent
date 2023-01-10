@@ -5,12 +5,13 @@
 .rhc-banner {
     display: block;
     position: fixed;
-    z-index: 9999;
+    z-index: 99999;
     right: 0;
     bottom: 0;
     left: 0;
     width: 100%;
     padding: px(36) 0;
+    transition: all 0.3s ease;
     background-color: var(--background);
 
     &__content {
@@ -26,11 +27,13 @@
         }
 
         &__message {
+            transition: all 0.3s ease;
             color: var(--text-primary);
 
             a {
+                transition: all 0.3s ease;
                 color: var(--text-primary);
-                font-weight: 600;
+                font-weight: bold;
                 text-decoration: none;
             }
         }
@@ -45,6 +48,7 @@
             border-radius: px(18);
             background-color: var(--background);
             color: var(--text-primary);
+            font-family: inherit;
             font-size: px(16);
             cursor: pointer;
 
@@ -68,6 +72,7 @@
             border-radius: px(18);
             background-color: var(--text-primary);
             color: var(--background);
+            font-family: inherit;
             font-size: px(16);
             cursor: pointer;
 
@@ -86,6 +91,7 @@
 .rhc-details {
     display: flex;
     position: fixed;
+    z-index: 99999;
     top: 0;
     right: 0;
     bottom: 0;
@@ -100,6 +106,7 @@
         width: calc(100% - px(12));
         max-width: px(640);
         height: calc(100% - px(12));
+        transition: all 0.3s ease;
         border-radius: px(8);
         background-color: var(--background);
         box-shadow: 0 px(11) px(32) 0 rgb(0 0 0 / 10%), 0 px(5) px(12) -px(8) rgb(0 0 0 / 20%),
@@ -120,7 +127,7 @@
             padding: px(24);
 
             h1 {
-                margin: 0;
+                margin: 0 0 px(12) 0;
                 font-size: medium;
             }
         }
@@ -128,6 +135,7 @@
         &__main {
             padding: px(24);
             overflow-y: auto;
+            transition: all 0.3s ease;
 
             &::-webkit-scrollbar {
                 width: var(--scrollbar-size);
@@ -191,6 +199,7 @@
                 border-radius: px(18);
                 background-color: var(--background);
                 color: var(--text-primary);
+                font-family: inherit;
                 font-size: px(16);
                 cursor: pointer;
 
@@ -210,6 +219,7 @@
                 border-radius: px(18);
                 background-color: var(--text-primary);
                 color: var(--background);
+                font-family: inherit;
                 font-size: px(16);
                 cursor: pointer;
 

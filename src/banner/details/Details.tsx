@@ -1,10 +1,12 @@
 import { useCallback } from 'react';
 import { useConsent } from '../../useConsent';
-import { ConsentBannerDetail } from './Detail';
 import { useConsentBannerActions } from '../useConsentBannerActions';
+import { ConsentBannerDetail } from './Detail';
 import { useSelectedServices } from './useSelectedServices';
 
-export function ConsentBannerDetails({ onToggle }: { onToggle: () => void }) {
+type ConsentBannerDetailsProps = { onToggle: () => void };
+
+export function ConsentBannerDetails({ onToggle }: ConsentBannerDetailsProps) {
     const {
         options: { services, theme },
     } = useConsent();

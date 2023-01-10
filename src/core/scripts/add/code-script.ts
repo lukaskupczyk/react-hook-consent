@@ -1,8 +1,4 @@
-import { ScriptCode } from '../../../Context';
-
-export function addCodeScript(script: ScriptCode, elementId: string) {
-    const { code } = script;
-
+export function addCodeScript(code: string, elementId: string) {
     const element = document.createElement('script');
     element.id = elementId;
     element.innerHTML = code;

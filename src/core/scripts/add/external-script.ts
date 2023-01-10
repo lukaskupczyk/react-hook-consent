@@ -1,8 +1,4 @@
-import { ScriptExternal } from '../../../Context';
-
-export function addExternalScript(script: ScriptExternal, elementId: string) {
-    const { src } = script;
-
+export function addExternalScript(src: string, elementId: string) {
     const element = document.createElement('script');
     element.id = elementId;
     element.src = src;
