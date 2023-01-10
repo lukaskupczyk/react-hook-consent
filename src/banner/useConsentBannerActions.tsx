@@ -1,10 +1,6 @@
 import { useCallback, useState } from 'react';
 import { Consent } from '../Context';
-import { addScripts } from '../services/scripts/add';
-import { removeScripts } from '../services/scripts/remove';
 import { useConsent } from '../useConsent';
-import { deleteAllCookies } from '../services/cookies/delete';
-import { removeServices } from '../services/remove-services';
 
 export function useConsentBannerActions() {
     const {
@@ -16,32 +12,14 @@ export function useConsentBannerActions() {
 
     const onApprove = useCallback(
         (approved?: Consent[]) => {
-            let selectedServices = services;
-
-            if (approved) {
-                selectedServices = selectedServices.filter((service) => approved.includes(service.id));
-
-                removeServices(services, approved);
-            }
-
-            selectedServices.forEach(({ id, scripts }) => {
-                addScripts(id, scripts);
-            });
-
-            setConsent(selectedServices.map(({ id }) => id));
+            setConsent(approved ? approved : services.map(({ id }) => id));
         },
         [services, setConsent]
     );
 
     const onDecline = useCallback(() => {
-        services.forEach(({ id, scripts }) => {
-            removeScripts(id, scripts);
-        });
-
-        deleteAllCookies();
-
         setConsent([]);
-    }, [services, setConsent]);
+    }, [setConsent]);
 
     const onDetailsToggle = useCallback(() => {
         setShowDetails((details) => !details);

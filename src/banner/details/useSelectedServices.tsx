@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
-import { Consent } from '../Context';
-import { useConsent } from '../useConsent';
+import { Consent } from '../../Context';
+import { useConsent } from '../../useConsent';
 
 export function useSelectedServices() {
     const { consent } = useConsent();

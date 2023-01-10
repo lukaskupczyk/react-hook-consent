@@ -1,9 +1,9 @@
 import hash from 'object-hash';
 import { useCallback, useEffect, useState } from 'react';
 import { Consent, ConsentOptions } from './Context';
-import { addScripts } from './services/scripts/add';
-import { getFromLocalStorage } from './utils/get-from-local-storage';
-import { saveToLocalStorage } from './utils/save-to-local-storage';
+import { addServices } from './core/add-services';
+import { getFromLocalStorage } from './core/local-storage/get';
+import { updateServices } from './core/update-services';
 
 export function useConsentState(options: ConsentOptions) {
     const [state, setState] = useState<{ consent: Consent[]; isBannerVisible: boolean; hash: string }>({
@@ -15,22 +15,18 @@ export function useConsentState(options: ConsentOptions) {
     useEffect(() => {
         const { consent, isBannerVisible } = getFromLocalStorage(state.hash);
 
-        options.services.forEach(({ id, scripts }) => {
-            if (consent.includes(id)) {
-                addScripts(id, scripts);
-            }
-        });
-
         setState((state) => ({ ...state, consent, isBannerVisible }));
+
+        const approvedServices = options.services.filter((service) => consent.includes(service.id));
+        addServices(approvedServices);
     }, [options.services, state.hash]);
 
     const setConsent = useCallback(
         (consent: Consent[]) => {
             setState((state) => ({ ...state, consent, isBannerVisible: false }));
-
-            saveToLocalStorage(consent, state.hash);
+            updateServices(options, consent, state.hash);
         },
-        [state.hash]
+        [options, state.hash]
     );
 
     const toggleBanner = useCallback(() => {

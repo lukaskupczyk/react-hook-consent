@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import Toggle from 'react-toggle';
-import { Consent, ConsentOptionsService } from '../Context';
-import { useConsent } from '../useConsent';
+import { Consent, ConsentOptionsService } from '../../Context';
+import { useConsent } from '../../useConsent';
 
 type ConsentBannerDetailProps = {
     onChange: (service: Consent, selected: boolean) => void;

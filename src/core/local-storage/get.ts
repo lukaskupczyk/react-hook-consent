@@ -1,5 +1,5 @@
-import { localStorageKey } from './config';
-import { Consent } from '../Context';
+import { localStorageKey } from '../../config';
+import { Consent } from '../../Context';
 
 type StoredState = { consent?: Consent[]; hash?: string };
 

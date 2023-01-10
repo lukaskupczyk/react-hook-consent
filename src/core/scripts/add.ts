@@ -1,5 +1,5 @@
 import { ConsentOptions } from '../../Context';
-import { idPrefix } from '../../utils/config';
+import { idPrefix } from '../../config';
 import { addCodeScript } from './add/code-script';
 import { addExternalScript } from './add/external-script';
 import { isScriptCode } from './is-script-code';
