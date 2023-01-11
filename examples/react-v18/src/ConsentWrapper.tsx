@@ -63,9 +63,14 @@ export function ConsentWrapper({ children }: { children: React.ReactNode }) {
         <ConsentProvider options={{ ...consentOptions, theme }}>
             <button onClick={onThemeToggle}>Toggle theme</button>
             {children}
-            <ConsentBanner>
+            <ConsentBanner
+                details={{ hidden: false, label: 'More' }}
+                decline={{ label: 'No' }}
+                approve={{ label: 'Yes' }}
+            >
                 <>
-                    Optional individual consent text including a <a href="test">link</a>
+                    Can we use cookies and external services according to our <a href="test">privacy policy</a> to
+                    improve the browsing experience?
                 </>
             </ConsentBanner>
         </ConsentProvider>

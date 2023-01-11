@@ -1,12 +1,23 @@
+import { ReactNode } from 'react';
 import { useConsent } from '../useConsent';
 import { ConsentBannerDetails } from './details/Details';
 import { useConsentBannerActions } from './useConsentBannerActions';
 
 type ConsentBannerProps = {
     children?: React.ReactNode;
+    details?: {
+        hidden?: boolean;
+        label?: string | ReactNode;
+    };
+    decline?: {
+        label?: string | ReactNode;
+    };
+    approve?: {
+        label?: string | ReactNode;
+    };
 };
 
-export function ConsentBanner({ children }: ConsentBannerProps) {
+export function ConsentBanner({ children, details, approve, decline }: ConsentBannerProps) {
     const {
         isBannerVisible,
         options: { theme },
@@ -28,14 +39,16 @@ export function ConsentBanner({ children }: ConsentBannerProps) {
                                 </>
                             )}
                         </div>
-                        <button className="rhc-banner__content__decline" onClick={onDetailsToggle}>
-                            Settings
+                        {details?.hidden ? null : (
+                            <button className="rhc-banner__content__secondary" onClick={onDetailsToggle}>
+                                {details?.label ? details.label : <>Settings</>}
+                            </button>
+                        )}
+                        <button className="rhc-banner__content__secondary" onClick={onDecline}>
+                            {decline?.label ? decline.label : <>Decline</>}
                         </button>
-                        <button className="rhc-banner__content__decline" onClick={onDecline}>
-                            Decline
-                        </button>
-                        <button className="rhc-banner__content__approve" onClick={() => onApprove()}>
-                            Approve
+                        <button className="rhc-banner__content__primary" onClick={() => onApprove()}>
+                            {approve?.label ? approve.label : <>Approve</>}
                         </button>
                     </div>
                 </div>
