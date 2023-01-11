@@ -1,7 +1,7 @@
 {
     "name": "react-hook-consent",
-    "version": "2.1.0",
-    "description": "A cookie and external script consent library for React",
+    "version": "2.1.1",
+    "description": "React consent management solution and banner for cookies and (external) scripts.",
     "scripts": {
         "build": "node esbuild.config.mjs production",
         "dev": "node esbuild.config.mjs dev",
@@ -23,7 +23,9 @@
         "consent",
         "cookie",
         "react-hooks",
-        "hooks"
+        "hooks",
+        "banner",
+        "gdpr"
     ],
     "devDependencies": {
         "@babel/preset-env": "^7.20.2",
