@@ -15,20 +15,23 @@
     background-color: var(--background);
 
     &__content {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: px(12);
         max-width: px(1440);
         margin: 0 auto;
         padding: 0 px(40);
 
         @include md {
-            grid-template-columns: 1fr px(200) px(200) px(200);
+            display: flex;
+            gap: px(12);
         }
 
         &__message {
+            margin: 0 auto px(16) auto;
             transition: all 0.3s ease;
             color: var(--text-primary);
+
+            @include md {
+                margin: 0 auto;
+            }
 
             a {
                 transition: all 0.3s ease;
@@ -38,10 +41,10 @@
             }
         }
 
-        &__decline {
+        &__secondary {
             width: 100%;
             height: px(36);
-            margin: 0 auto;
+            margin: px(4) auto;
             padding: px(2);
             transition: all 0.3s ease;
             border: px(2) solid var(--text-primary);
@@ -54,6 +57,7 @@
 
             @include md {
                 width: px(200);
+                margin: 0 auto;
             }
 
             &:hover {
@@ -62,10 +66,10 @@
             }
         }
 
-        &__approve {
+        &__primary {
             width: 100%;
             height: px(36);
-            margin: 0 auto;
+            margin: px(4) auto;
             padding: px(2);
             transition: all 0.3s ease;
             border: px(2) solid var(--text-primary);
@@ -78,6 +82,7 @@
 
             @include md {
                 width: px(200);
+                margin: 0 auto;
             }
 
             &:hover {

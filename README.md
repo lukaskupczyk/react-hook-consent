@@ -122,18 +122,28 @@ import 'react-hook-consent/dist/styles/style.css';
 
 // ...
 <App />
-<ConsentBanner>
-    <>
-        Optional individual consent text including a <a href="test">link</a>
+<ConsentBanner
+    details={{ hidden: false, label: 'More' }}
+    decline={{ label: 'No' }}
+    approve={{ label: 'Yes' }}
+>
+     <>
+        Can we use cookies and external services according to our <a href="test">privacy policy</a> to
+        improve the browsing experience?
     </>
 </ConsentBanner>
+// ...
 ```
 
 #### Props
 
-| Name     | Type      | Required | Description         | Default                                                                                                                                     |
-| -------- | --------- | -------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| children | ReactNode |          | The consent message | We want to use cookies and external services to analyze and improve this website for you. You will find more details in our privacy policy. |
+| Name           | Type                | Required | Description                       | Default                                                                                                                                     |
+| -------------- | ------------------- | -------- | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| children       | ReactNode           |          | The consent message               | We want to use cookies and external services to analyze and improve this website for you. You will find more details in our privacy policy. |
+| details.hidden | boolean             |          | Hide the detailed settings button | false                                                                                                                                       |
+| details.label  | string \| ReactNode |          | Label of detailed settings button | Settings                                                                                                                                    |
+| approve.label  | string \| ReactNode |          | Label of approve button           | Approve                                                                                                                                     |
+| decline.label  | string \| ReactNode |          | Label of decline button           | Decline                                                                                                                                     |
 
 ### Hooks
 
