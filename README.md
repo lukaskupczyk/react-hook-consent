@@ -1,10 +1,8 @@
 # react-hook-consent
 
-React consent management solution for cookies and (external) scripts.
+React consent management solution and banner for cookies and (external) scripts.
 
-![Consent Banner](/assets/banner.png)
-
-![Consent Details](/assets/details.png)
+![react-hook-consent Screenshot](/assets/screenshot.png)
 
 ## Features
 
