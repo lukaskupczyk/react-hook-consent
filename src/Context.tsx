@@ -18,10 +18,11 @@ export type ConsentOptions = {
     theme?: Theme;
 };
 
-export type Consent = string;
+export type Consent = ConsentOptionsService['id'];
 
 type ConsentContext = {
     consent: Consent[];
+    hasConsent: (consent: Consent) => boolean;
     isBannerVisible: boolean;
     toggleBanner: () => void;
     setConsent: (consent: Consent[]) => void;
@@ -31,6 +32,7 @@ type ConsentContext = {
 export const ConsentContext = React.createContext<ConsentContext>({
     consent: [],
     isBannerVisible: true,
+    hasConsent: () => true,
     toggleBanner: () => {},
     setConsent: ([]) => {},
     options: { services: [] },

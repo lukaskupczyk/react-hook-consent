@@ -29,11 +29,18 @@ export function useConsentState(options: ConsentOptions) {
         [options, state.hash]
     );
 
+    const hasConsent = useCallback(
+        (id: Consent) => {
+            return state.consent.includes(id);
+        },
+        [state.consent]
+    );
+
     const toggleBanner = useCallback(() => {
         setState((state) => {
             return { ...state, isBannerVisible: !state.isBannerVisible };
         });
     }, []);
 
-    return { consent: state.consent, isBannerVisible: state.isBannerVisible, toggleBanner, setConsent };
+    return { consent: state.consent, hasConsent, isBannerVisible: state.isBannerVisible, toggleBanner, setConsent };
 }

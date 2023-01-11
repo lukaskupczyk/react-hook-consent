@@ -164,6 +164,7 @@ const { consent, setConsent, isBannerVisible, toggleBanner } = useConsent();
 | Object Name     | Type                         | Description                                         |
 | --------------- | ---------------------------- | --------------------------------------------------- |
 | consent         | Consent[]                    | Services which have been consent to                 |
+| hasConsent      | (id: Consent) => boolean     | Get consent state of specific id                    |
 | isBannerVisible | boolean                      | Indicates if consent banner is visible              |
 | toggleBanner    | () => void                   | Shows or hides the consent banner                   |
 | setConsent      | (consent: Consent[]) => void | Update consent by providing consent ids to be saved |
