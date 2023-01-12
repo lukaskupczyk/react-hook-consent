@@ -1,13 +1,14 @@
 import { ReactNode } from 'react';
 import { useConsent } from '../useConsent';
-import { ConsentBannerDetails } from './details/Details';
+import { ConsentBannerSettings, ConsentBannerSettingsModal } from './settings/Settings';
 import { useConsentBannerActions } from './useConsentBannerActions';
 
 type ConsentBannerProps = {
-    children?: React.ReactNode;
-    details?: {
+    children?: ReactNode;
+    settings?: {
         hidden?: boolean;
         label?: string | ReactNode;
+        modal?: ConsentBannerSettingsModal;
     };
     decline?: {
         label?: string | ReactNode;
@@ -17,7 +18,7 @@ type ConsentBannerProps = {
     };
 };
 
-export function ConsentBanner({ children, details, approve, decline }: ConsentBannerProps) {
+export function ConsentBanner({ children, settings, approve, decline }: ConsentBannerProps) {
     const {
         isBannerVisible,
         options: { theme },
@@ -39,9 +40,9 @@ export function ConsentBanner({ children, details, approve, decline }: ConsentBa
                                 </>
                             )}
                         </div>
-                        {details?.hidden ? null : (
+                        {settings?.hidden ? null : (
                             <button className="rhc-banner__content__secondary" onClick={onDetailsToggle}>
-                                {details?.label ? details.label : <>Settings</>}
+                                {settings?.label ? settings.label : <>Settings</>}
                             </button>
                         )}
                         <button className="rhc-banner__content__secondary" onClick={onDecline}>
@@ -54,7 +55,7 @@ export function ConsentBanner({ children, details, approve, decline }: ConsentBa
                 </div>
             )}
 
-            {isDetailsVisible && <ConsentBannerDetails onToggle={onDetailsToggle} />}
+            {isDetailsVisible && <ConsentBannerSettings onToggle={onDetailsToggle} modal={settings?.modal} />}
         </>
     );
 }

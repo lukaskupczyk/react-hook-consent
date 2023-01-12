@@ -93,7 +93,7 @@
     }
 }
 
-.rhc-details {
+.rhc-settings {
     display: flex;
     position: fixed;
     z-index: 99999;
@@ -159,7 +159,7 @@
 
             scrollbar-color: var(--scrollbar-foreground-color) var(--scrollbar-background-color);
 
-            &__detail {
+            &__item {
                 margin: px(24) 0;
 
                 @include md {

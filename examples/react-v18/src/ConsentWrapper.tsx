@@ -64,7 +64,7 @@ export function ConsentWrapper({ children }: { children: React.ReactNode }) {
             <button onClick={onThemeToggle}>Toggle theme</button>
             {children}
             <ConsentBanner
-                details={{ hidden: false, label: 'More' }}
+                settings={{ hidden: false, label: 'More' }}
                 decline={{ label: 'No' }}
                 approve={{ label: 'Yes' }}
             >
