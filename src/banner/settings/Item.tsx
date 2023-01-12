@@ -5,30 +5,30 @@ import { useConsent } from '../../useConsent';
 
 type ConsentBannerSettingsItemProps = {
     onChange: (service: Consent, selected: boolean) => void;
-    service: ConsentOptionsService;
+    id: ConsentOptionsService['id'];
+    name: ConsentOptionsService['name'];
+    description?: ConsentOptionsService['description'];
 };
 
-export function ConsentBannerSettingsItem({ onChange, service }: ConsentBannerSettingsItemProps) {
+export function ConsentBannerSettingsItem({ onChange, id, name, description }: ConsentBannerSettingsItemProps) {
     const { consent } = useConsent();
 
     const handleChange = useCallback(
         (e: React.ChangeEvent<HTMLInputElement>) => {
-            onChange(service.id, e.target.checked);
+            onChange(id, e.target.checked);
         },
-        [onChange, service.id]
+        [onChange, id]
     );
 
     return (
         <div className="rhc-settings__content__main__item">
             <div className="rhc-settings__content__main__item__title">
-                <label className="rhc-settings__content__main__item__title__label" htmlFor={service.id}>
-                    {service.name}
+                <label className="rhc-settings__content__main__item__title__label" htmlFor={id}>
+                    {name}
                 </label>
-                <Toggle id={service.id} defaultChecked={consent.includes(service.id)} onChange={handleChange} />
+                <Toggle id={id} defaultChecked={consent.includes(id)} onChange={handleChange} />
             </div>
-            {service.description && (
-                <p className="rhc-settings__content__main__item__description">{service.description}</p>
-            )}
+            {description && <p className="rhc-settings__content__main__item__description">{description}</p>}
         </div>
     );
 }

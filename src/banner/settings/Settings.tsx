@@ -48,6 +48,7 @@ export function ConsentBannerSettings({ onToggle, modal }: ConsentBannerSettings
         <div
             className={`${theme === 'light' ? 'rhc-theme-light' : 'rhc-theme-dark'} rhc-settings`}
             onClick={handleHide}
+            data-testid="settings"
         >
             <div className="rhc-settings__content" onClick={(e) => e.stopPropagation()}>
                 <div className="rhc-settings__content__header">
@@ -65,9 +66,11 @@ export function ConsentBannerSettings({ onToggle, modal }: ConsentBannerSettings
                     </p>
                 </div>
                 <div className="rhc-settings__content__main">
-                    {services.map((service, index) => (
+                    {services.map(({ id, name, description }, index) => (
                         <ConsentBannerSettingsItem
-                            service={service}
+                            id={id}
+                            name={name}
+                            description={description}
                             onChange={handleSelectedServiceChange}
                             key={index}
                         />
@@ -78,7 +81,7 @@ export function ConsentBannerSettings({ onToggle, modal }: ConsentBannerSettings
                         {modal?.decline?.label ? modal?.decline?.label : <>Decline</>}
                     </button>
                     <button className="rhc-settings__content__footer__secondary" onClick={handleApproveSelected}>
-                        {modal?.approve?.label ? modal?.approve?.label : <>Approve selecion</>}
+                        {modal?.approve?.label ? modal?.approve?.label : <>Approve selection</>}
                     </button>
                     <button className="rhc-settings__content__footer__primary" onClick={handleApproveAll}>
                         {modal?.approveAll?.label ? modal?.approveAll?.label : <>Approve all</>}
