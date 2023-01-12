@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom';
-import { render, screen } from '@testing-library/react';
+import { cleanup, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { ConsentProvider } from '../Provider';
@@ -19,6 +19,10 @@ function TestingProvider({ children }: { children: React.ReactNode }) {
 }
 
 describe('<ConsentBanner />', () => {
+    afterEach(() => {
+        cleanup();
+    });
+
     test('expect banner to be visible', async () => {
         // ARRANGE
         render(
@@ -33,6 +37,74 @@ describe('<ConsentBanner />', () => {
                 name: /approve/i,
             })
         ).toBeInTheDocument();
+    });
+
+    test('expect banner elements to have default texts', async () => {
+        // ARRANGE
+        render(
+            <TestingProvider>
+                <ConsentBanner />
+            </TestingProvider>
+        );
+
+        // ASSERT
+        expect(
+            screen.getByRole('button', {
+                name: /settings/i,
+            })
+        ).toBeInTheDocument();
+        expect(
+            screen.getByRole('button', {
+                name: /decline/i,
+            })
+        ).toBeInTheDocument();
+        expect(
+            screen.getByRole('button', {
+                name: /approve/i,
+            })
+        ).toBeInTheDocument();
+    });
+
+    test('expect banner elements to have custom texts', async () => {
+        // ARRANGE
+        render(
+            <TestingProvider>
+                <ConsentBanner approve={{ label: 'yes' }} decline={{ label: 'no' }} settings={{ label: 'more' }} />
+            </TestingProvider>
+        );
+
+        // ASSERT
+        expect(
+            screen.getByRole('button', {
+                name: /yes/i,
+            })
+        ).toBeInTheDocument();
+        expect(
+            screen.getByRole('button', {
+                name: /no/i,
+            })
+        ).toBeInTheDocument();
+        expect(
+            screen.getByRole('button', {
+                name: /more/i,
+            })
+        ).toBeInTheDocument();
+    });
+
+    test('expect settings button to be hidden', async () => {
+        // ARRANGE
+        render(
+            <TestingProvider>
+                <ConsentBanner settings={{ hidden: true }} />
+            </TestingProvider>
+        );
+
+        // ASSERT
+        expect(
+            screen.queryByRole('button', {
+                name: /settings/i,
+            })
+        ).not.toBeInTheDocument();
     });
 
     test('expect banner to be hidden upon approve', async () => {

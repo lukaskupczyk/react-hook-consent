@@ -121,7 +121,7 @@ import 'react-hook-consent/dist/styles/style.css';
 // ...
 <App />
 <ConsentBanner
-    details={{ hidden: false, label: 'More' }}
+    settings={{ hidden: false, label: 'More' }}
     decline={{ label: 'No' }}
     approve={{ label: 'Yes' }}
 >
@@ -135,13 +135,24 @@ import 'react-hook-consent/dist/styles/style.css';
 
 #### Props
 
-| Name           | Type                | Required | Description                       | Default                                                                                                                                     |
-| -------------- | ------------------- | -------- | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| children       | ReactNode           |          | The consent message               | We want to use cookies and external services to analyze and improve this website for you. You will find more details in our privacy policy. |
-| details.hidden | boolean             |          | Hide the detailed settings button | false                                                                                                                                       |
-| details.label  | string \| ReactNode |          | Label of detailed settings button | Settings                                                                                                                                    |
-| approve.label  | string \| ReactNode |          | Label of approve button           | Approve                                                                                                                                     |
-| decline.label  | string \| ReactNode |          | Label of decline button           | Decline                                                                                                                                     |
+| Name            | Type                       | Required | Description                         | Default                                                                                                                                     |
+| --------------- | -------------------------- | -------- | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| children        | ReactNode                  |          | The consent message                 | We want to use cookies and external services to analyze and improve this website for you. You will find more details in our privacy policy. |
+| settings.hidden | boolean                    |          | Hide the detailed settings button   | false                                                                                                                                       |
+| settings.label  | string \| ReactNode        |          | Label of detailed settings button   | Settings                                                                                                                                    |
+| settings.modal  | ConsentBannerSettingsModal |          | Configuration of the settings modal |                                                                                                                                             |
+| approve.label   | string \| ReactNode        |          | Label of approve button             | Approve                                                                                                                                     |
+| decline.label   | string \| ReactNode        |          | Label of decline button             | Decline                                                                                                                                     |
+
+`ConsentBannerSettingsModal` has the following options:
+
+| Name             | Type                | Required | Description                 |
+| ---------------- | ------------------- | -------- | --------------------------- |
+| title            | string \| ReactNode |          | The title of the modal      |
+| description      | string \| ReactNode |          | The description text        |
+| decline.label    | string \| ReactNode |          | Label of decline button     |
+| approve.label    | string \| ReactNode |          | Label of approve button     |
+| approveAll.label | string \| ReactNode |          | Label of approve all button |
 
 ### Hooks
 
