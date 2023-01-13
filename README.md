@@ -1,3 +1,8 @@
+![publish workflow](https://github.com/lukaskupczyk/react-hook-consent/actions/workflows/publish.yml/badge.svg)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/807f879a42c4aa48c475/test_coverage)](https://codeclimate.com/github/lukaskupczyk/react-hook-consent/test_coverage)
+[![npm version](https://badge.fury.io/js/react-hook-consent.svg)](https://badge.fury.io/js/react-hook-consent)
+[![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 # react-hook-consent
 
 React consent management solution and banner for cookies and (external) scripts.
