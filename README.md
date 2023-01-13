@@ -1,3 +1,5 @@
+![publish workflow](https://github.com/lukaskupczyk/react-hook-consent/actions/workflows/publish.yml/badge.svg)
+
 # react-hook-consent
 
 React consent management solution and banner for cookies and (external) scripts.
