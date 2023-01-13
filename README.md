@@ -1,4 +1,5 @@
 ![publish workflow](https://github.com/lukaskupczyk/react-hook-consent/actions/workflows/publish.yml/badge.svg)
+[![npm version](https://badge.fury.io/js/react-hook-consent.svg)](https://badge.fury.io/js/react-hook-consent)
 
 # react-hook-consent
 
