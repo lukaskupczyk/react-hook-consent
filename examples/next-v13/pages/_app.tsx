@@ -33,7 +33,7 @@ export default function App({ Component, pageProps }: AppProps) {
     return (
         <ConsentProvider options={consentOptions}>
             <Component {...pageProps} />
-            <ConsentBanner />
+            <ConsentBanner decline={{ hidden: false, label: 'Decline' }} />
         </ConsentProvider>
     );
 }

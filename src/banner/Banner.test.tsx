@@ -107,6 +107,22 @@ describe('<ConsentBanner />', () => {
         ).not.toBeInTheDocument();
     });
 
+    test('expect decline button to be hidden', async () => {
+        // ARRANGE
+        render(
+            <TestingProvider>
+                <ConsentBanner decline={{ hidden: true }} />
+            </TestingProvider>
+        );
+
+        // ASSERT
+        expect(
+            screen.queryByRole('button', {
+                name: /decline/i,
+            })
+        ).not.toBeInTheDocument();
+    });
+
     test('expect banner to be hidden upon approve', async () => {
         // ARRANGE
         render(
