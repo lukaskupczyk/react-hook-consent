@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { Consent, ConsentOptions } from './Context';
 import { addServices } from './core/add-services';
 import { getFromLocalStorage } from './core/local-storage/get';
+import { isValidInLocalStorage } from './core/local-storage/valid';
 import { updateServices } from './core/update-services';
 
 type ConsentState = { consent: Consent[]; isBannerVisible: boolean; hash: string };
@@ -15,6 +16,13 @@ export function useConsentState(options: ConsentOptions) {
     });
 
     useEffect(() => {
+        if (!isValidInLocalStorage(state.hash)) {
+            const consent = options.services.map((service) => service.id);
+
+            setState((state) => ({ ...state, consent, isBannerVisible: true }));
+            return;
+        }
+
         const { consent, isBannerVisible } = getFromLocalStorage(state.hash);
 
         setState((state) => ({ ...state, consent, isBannerVisible }));
@@ -37,5 +45,11 @@ export function useConsentState(options: ConsentOptions) {
         setState((state) => ({ ...state, isBannerVisible: !state.isBannerVisible }));
     }, []);
 
-    return { consent: state.consent, hasConsent, isBannerVisible: state.isBannerVisible, toggleBanner, setConsent };
+    return {
+        consent: state.consent,
+        hasConsent,
+        isBannerVisible: state.isBannerVisible,
+        toggleBanner,
+        setConsent,
+    };
 }

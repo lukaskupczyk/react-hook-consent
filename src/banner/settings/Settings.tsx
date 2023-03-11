@@ -66,11 +66,12 @@ export function ConsentBannerSettings({ onToggle, modal }: ConsentBannerSettings
                     </p>
                 </div>
                 <div className="rhc-settings__content__main">
-                    {services.map(({ id, name, description }, index) => (
+                    {services.map(({ id, name, description, mandatory }, index) => (
                         <ConsentBannerSettingsItem
                             id={id}
                             name={name}
                             description={description}
+                            mandatory={mandatory}
                             onChange={handleSelectedServiceChange}
                             key={index}
                         />

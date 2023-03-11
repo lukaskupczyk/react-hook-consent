@@ -8,9 +8,16 @@ type ConsentBannerSettingsItemProps = {
     id: ConsentOptionsService['id'];
     name: ConsentOptionsService['name'];
     description?: ConsentOptionsService['description'];
+    mandatory?: ConsentOptionsService['mandatory'];
 };
 
-export function ConsentBannerSettingsItem({ onChange, id, name, description }: ConsentBannerSettingsItemProps) {
+export function ConsentBannerSettingsItem({
+    onChange,
+    id,
+    name,
+    description,
+    mandatory,
+}: ConsentBannerSettingsItemProps) {
     const { consent } = useConsent();
 
     const handleChange = useCallback(
@@ -26,7 +33,7 @@ export function ConsentBannerSettingsItem({ onChange, id, name, description }: C
                 <label className="rhc-settings__content__main__item__title__label" htmlFor={id}>
                     {name}
                 </label>
-                <Toggle id={id} defaultChecked={consent.includes(id)} onChange={handleChange} />
+                <Toggle id={id} defaultChecked={consent.includes(id)} onChange={handleChange} disabled={mandatory} />
             </div>
             {description && <p className="rhc-settings__content__main__item__description">{description}</p>}
         </div>
