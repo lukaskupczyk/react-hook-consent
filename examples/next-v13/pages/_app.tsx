@@ -25,6 +25,7 @@ const consentOptions: ConsentOptions = {
                 { id: 'external-script', src: 'https://myscript.com/script.js' },
                 { id: 'inline-code', code: `alert("I am a JavaScript code");` },
             ],
+            mandatory: true,
         },
     ],
 };
@@ -33,7 +34,10 @@ export default function App({ Component, pageProps }: AppProps) {
     return (
         <ConsentProvider options={consentOptions}>
             <Component {...pageProps} />
-            <ConsentBanner decline={{ hidden: false, label: 'Decline' }} />
+            <ConsentBanner
+                decline={{ hidden: false, label: 'Decline' }}
+                settings={{ modal: { decline: { hidden: true } } }}
+            />
         </ConsentProvider>
     );
 }

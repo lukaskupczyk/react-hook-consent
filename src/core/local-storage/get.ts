@@ -1,7 +1,7 @@
 import { localStorageKey } from '../../config';
 import { Consent } from '../../Context';
 
-type StoredState = { consent?: Consent[]; hash?: string };
+export type StoredState = { consent?: Consent[]; hash?: string };
 
 export function getFromLocalStorage(hash: string) {
     const item = localStorage.getItem(`${localStorageKey}`);

@@ -11,6 +11,7 @@ export type ConsentOptionsService = {
     description?: string;
     scripts?: Array<ScriptExternal | ScriptCode>;
     cookies?: Array<Cookie>;
+    mandatory?: boolean;
 };
 
 export type ConsentOptions = {

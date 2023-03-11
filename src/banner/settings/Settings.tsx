@@ -8,6 +8,7 @@ export type ConsentBannerSettingsModal = {
     title?: string | ReactNode;
     description?: string | ReactNode;
     decline?: {
+        hidden?: boolean;
         label?: string | ReactNode;
     };
     approve?: {
@@ -66,20 +67,23 @@ export function ConsentBannerSettings({ onToggle, modal }: ConsentBannerSettings
                     </p>
                 </div>
                 <div className="rhc-settings__content__main">
-                    {services.map(({ id, name, description }, index) => (
+                    {services.map(({ id, name, description, mandatory }, index) => (
                         <ConsentBannerSettingsItem
                             id={id}
                             name={name}
                             description={description}
+                            mandatory={mandatory}
                             onChange={handleSelectedServiceChange}
                             key={index}
                         />
                     ))}
                 </div>
                 <div className="rhc-settings__content__footer">
-                    <button className="rhc-settings__content__footer__secondary" onClick={handleDecline}>
-                        {modal?.decline?.label ? modal?.decline?.label : <>Decline</>}
-                    </button>
+                    {!modal?.decline?.hidden && (
+                        <button className="rhc-settings__content__footer__secondary" onClick={handleDecline}>
+                            {modal?.decline?.label ? modal?.decline?.label : <>Decline</>}
+                        </button>
+                    )}
                     <button className="rhc-settings__content__footer__secondary" onClick={handleApproveSelected}>
                         {modal?.approve?.label ? modal?.approve?.label : <>Approve selection</>}
                     </button>
