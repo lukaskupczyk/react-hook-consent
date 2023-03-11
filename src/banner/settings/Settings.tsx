@@ -8,6 +8,7 @@ export type ConsentBannerSettingsModal = {
     title?: string | ReactNode;
     description?: string | ReactNode;
     decline?: {
+        hidden?: boolean;
         label?: string | ReactNode;
     };
     approve?: {
@@ -78,9 +79,11 @@ export function ConsentBannerSettings({ onToggle, modal }: ConsentBannerSettings
                     ))}
                 </div>
                 <div className="rhc-settings__content__footer">
-                    <button className="rhc-settings__content__footer__secondary" onClick={handleDecline}>
-                        {modal?.decline?.label ? modal?.decline?.label : <>Decline</>}
-                    </button>
+                    {!modal?.decline?.hidden && (
+                        <button className="rhc-settings__content__footer__secondary" onClick={handleDecline}>
+                            {modal?.decline?.label ? modal?.decline?.label : <>Decline</>}
+                        </button>
+                    )}
                     <button className="rhc-settings__content__footer__secondary" onClick={handleApproveSelected}>
                         {modal?.approve?.label ? modal?.approve?.label : <>Approve selection</>}
                     </button>

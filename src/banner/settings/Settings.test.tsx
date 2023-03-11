@@ -102,6 +102,28 @@ describe('<ConsentBannerSettings />', () => {
         ).toBeInTheDocument();
     });
 
+    test('expect decline button to be hidden', async () => {
+        // ARRANGE
+        // ARRANGE
+        render(
+            <TestingProvider>
+                <ConsentBannerSettings
+                    onToggle={onToggleMock}
+                    modal={{
+                        decline: { hidden: true },
+                    }}
+                />
+            </TestingProvider>
+        );
+
+        // ASSERT
+        expect(
+            screen.queryByRole('button', {
+                name: /decline/i,
+            })
+        ).not.toBeInTheDocument();
+    });
+
     test('expect visibility to be hidden upon outside click', async () => {
         // ARRANGE
         render(

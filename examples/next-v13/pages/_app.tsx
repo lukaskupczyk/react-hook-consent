@@ -34,7 +34,10 @@ export default function App({ Component, pageProps }: AppProps) {
     return (
         <ConsentProvider options={consentOptions}>
             <Component {...pageProps} />
-            <ConsentBanner decline={{ hidden: false, label: 'Decline' }} />
+            <ConsentBanner
+                decline={{ hidden: false, label: 'Decline' }}
+                settings={{ modal: { decline: { hidden: true } } }}
+            />
         </ConsentProvider>
     );
 }

@@ -158,6 +158,7 @@ import 'react-hook-consent/dist/styles/style.css';
 | ---------------- | ------------------- | -------- | --------------------------- |
 | title            | string \| ReactNode |          | The title of the modal      |
 | description      | string \| ReactNode |          | The description text        |
+| decline.hidden   | boolean             |          | Hide the decline button     |
 | decline.label    | string \| ReactNode |          | Label of decline button     |
 | approve.label    | string \| ReactNode |          | Label of approve button     |
 | approveAll.label | string \| ReactNode |          | Label of approve all button |
