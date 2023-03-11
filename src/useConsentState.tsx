@@ -5,8 +5,10 @@ import { addServices } from './core/add-services';
 import { getFromLocalStorage } from './core/local-storage/get';
 import { updateServices } from './core/update-services';
 
+type ConsentState = { consent: Consent[]; isBannerVisible: boolean; hash: string };
+
 export function useConsentState(options: ConsentOptions) {
-    const [state, setState] = useState<{ consent: Consent[]; isBannerVisible: boolean; hash: string }>({
+    const [state, setState] = useState<ConsentState>({
         consent: [],
         isBannerVisible: false,
         hash: hash(options),
@@ -29,17 +31,10 @@ export function useConsentState(options: ConsentOptions) {
         [options, state.hash]
     );
 
-    const hasConsent = useCallback(
-        (id: Consent) => {
-            return state.consent.includes(id);
-        },
-        [state.consent]
-    );
+    const hasConsent = useCallback((id: Consent) => state.consent.includes(id), [state.consent]);
 
     const toggleBanner = useCallback(() => {
-        setState((state) => {
-            return { ...state, isBannerVisible: !state.isBannerVisible };
-        });
+        setState((state) => ({ ...state, isBannerVisible: !state.isBannerVisible }));
     }, []);
 
     return { consent: state.consent, hasConsent, isBannerVisible: state.isBannerVisible, toggleBanner, setConsent };

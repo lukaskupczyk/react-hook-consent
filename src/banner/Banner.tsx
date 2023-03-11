@@ -11,6 +11,7 @@ type ConsentBannerProps = {
         modal?: ConsentBannerSettingsModal;
     };
     decline?: {
+        hidden?: boolean;
         label?: string | ReactNode;
     };
     approve?: {
@@ -45,9 +46,11 @@ export function ConsentBanner({ children, settings, approve, decline }: ConsentB
                                 {settings?.label ? settings.label : <>Settings</>}
                             </button>
                         )}
-                        <button className="rhc-banner__content__secondary" onClick={onDecline}>
-                            {decline?.label ? decline.label : <>Decline</>}
-                        </button>
+                        {!decline?.hidden && (
+                            <button className="rhc-banner__content__secondary" onClick={onDecline}>
+                                {decline?.label ? decline.label : <>Decline</>}
+                            </button>
+                        )}
                         <button className="rhc-banner__content__primary" onClick={() => onApprove()}>
                             {approve?.label ? approve.label : <>Approve</>}
                         </button>

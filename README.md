@@ -126,8 +126,8 @@ import 'react-hook-consent/dist/styles/style.css';
 // ...
 <App />
 <ConsentBanner
-    settings={{ hidden: false, label: 'More' }}
-    decline={{ label: 'No' }}
+    settings={{ hidden: false, label: 'More', modal: { title: 'Modal title' } }}
+    decline={{ show: true, label: 'No' }}
     approve={{ label: 'Yes' }}
 >
      <>
@@ -148,6 +148,7 @@ import 'react-hook-consent/dist/styles/style.css';
 | settings.modal  | ConsentBannerSettingsModal |          | Configuration of the settings modal |                                                                                                                                             |
 | approve.label   | string \| ReactNode        |          | Label of approve button             | Approve                                                                                                                                     |
 | decline.label   | string \| ReactNode        |          | Label of decline button             | Decline                                                                                                                                     |
+| decline.hidden  | boolean                    |          | Hide the decline button             | false                                                                                                                                       |
 
 `ConsentBannerSettingsModal` has the following options:
 

@@ -31,15 +31,15 @@ jest.mock('../useConsentBannerActions', () => {
     };
 });
 
+const onToggleMock = jest.fn();
+
 describe('<ConsentBannerSettings />', () => {
     afterEach(() => {
+        onToggleMock.mockClear();
         cleanup();
     });
 
     test('expect to be visible with default labels', async () => {
-        // ARRANGE
-        const onToggleMock = jest.fn();
-
         render(
             <TestingProvider>
                 <ConsentBannerSettings onToggle={onToggleMock} />
@@ -67,8 +67,6 @@ describe('<ConsentBannerSettings />', () => {
 
     test('expect to be visible with custom labels', async () => {
         // ARRANGE
-        const onToggleMock = jest.fn();
-
         render(
             <TestingProvider>
                 <ConsentBannerSettings
@@ -106,8 +104,6 @@ describe('<ConsentBannerSettings />', () => {
 
     test('expect visibility to be hidden upon outside click', async () => {
         // ARRANGE
-        const onToggleMock = jest.fn();
-
         render(
             <TestingProvider>
                 <ConsentBannerSettings onToggle={onToggleMock} />
@@ -123,8 +119,6 @@ describe('<ConsentBannerSettings />', () => {
 
     test('expect onApprove to be called upon approve selection button click', async () => {
         // ARRANGE
-        const onToggleMock = jest.fn();
-
         render(
             <TestingProvider>
                 <ConsentBannerSettings onToggle={onToggleMock} />
@@ -145,8 +139,6 @@ describe('<ConsentBannerSettings />', () => {
 
     test('expect onApprove to be called upon approve button click', async () => {
         // ARRANGE
-        const onToggleMock = jest.fn();
-
         render(
             <TestingProvider>
                 <ConsentBannerSettings onToggle={onToggleMock} />
@@ -167,8 +159,6 @@ describe('<ConsentBannerSettings />', () => {
 
     test('expect onDecline to be called upon decline button click', async () => {
         // ARRANGE
-        const onToggleMock = jest.fn();
-
         render(
             <TestingProvider>
                 <ConsentBannerSettings onToggle={onToggleMock} />
