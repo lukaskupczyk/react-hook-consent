@@ -6,8 +6,6 @@ export function useConsentBannerActions() {
     const {
         setConsent,
         options: { services },
-        isDetailsVisible,
-        toggleDetails,
     } = useConsent();
 
     const onApprove = useCallback(
@@ -21,9 +19,5 @@ export function useConsentBannerActions() {
         setConsent([]);
     }, [setConsent]);
 
-    const onDetailsToggle = useCallback(() => {
-        toggleDetails();
-    }, []);
-
-    return { onDecline, onApprove, onDetailsToggle, isDetailsVisible: isDetailsVisible };
+    return { onDecline, onApprove };
 }

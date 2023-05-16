@@ -21,7 +21,7 @@ export type ConsentBannerSettingsModal = {
 
 type ConsentBannerSettingsProps = { onToggle: () => void; modal?: ConsentBannerSettingsModal };
 
-export function ConsentBannerSettings({ onToggle, modal }: ConsentBannerSettingsProps) {
+export function ConsentBannerSettings({ onToggle = () => {}, modal }: ConsentBannerSettingsProps) {
     const {
         options: { services, theme },
     } = useConsent();

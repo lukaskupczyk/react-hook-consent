@@ -34,7 +34,7 @@ export function useConsentState(options: ConsentOptions) {
 
     const setConsent = useCallback(
         (consent: Consent[]) => {
-            setState((state) => ({ ...state, consent, isBannerVisible: false, isDetailsVisible: false }));
+            setState((state) => ({ ...state, consent, isBannerVisible: false }));
             updateServices(options, consent, state.hash);
         },
         [options, state.hash]
