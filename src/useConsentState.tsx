@@ -18,7 +18,7 @@ export function useConsentState(options: ConsentOptions) {
 
     useEffect(() => {
         if (!isValidInLocalStorage(state.hash)) {
-            const consent = options.services.map((service) => service.id);
+            const consent = options.services.filter((service) => service?.mandatory).map((service) => service.id);
 
             setState((state) => ({ ...state, consent, isBannerVisible: true, isDetailsVisible: false }));
             return;
