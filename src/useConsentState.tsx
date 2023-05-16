@@ -6,12 +6,13 @@ import { getFromLocalStorage } from './core/local-storage/get';
 import { isValidInLocalStorage } from './core/local-storage/valid';
 import { updateServices } from './core/update-services';
 
-type ConsentState = { consent: Consent[]; isBannerVisible: boolean; hash: string };
+type ConsentState = { consent: Consent[]; isBannerVisible: boolean; isDetailsVisible: boolean; hash: string };
 
 export function useConsentState(options: ConsentOptions) {
     const [state, setState] = useState<ConsentState>({
         consent: [],
         isBannerVisible: false,
+        isDetailsVisible: false,
         hash: hash(options),
     });
 
@@ -19,13 +20,13 @@ export function useConsentState(options: ConsentOptions) {
         if (!isValidInLocalStorage(state.hash)) {
             const consent = options.services.map((service) => service.id);
 
-            setState((state) => ({ ...state, consent, isBannerVisible: true }));
+            setState((state) => ({ ...state, consent, isBannerVisible: true, isDetailsVisible: false }));
             return;
         }
 
-        const { consent, isBannerVisible } = getFromLocalStorage(state.hash);
+        const { consent, isBannerVisible, isDetailsVisible } = getFromLocalStorage(state.hash);
 
-        setState((state) => ({ ...state, consent, isBannerVisible }));
+        setState((state) => ({ ...state, consent, isBannerVisible, isDetailsVisible }));
 
         const approvedServices = options.services.filter((service) => consent.includes(service.id));
         addServices(approvedServices);
@@ -33,7 +34,7 @@ export function useConsentState(options: ConsentOptions) {
 
     const setConsent = useCallback(
         (consent: Consent[]) => {
-            setState((state) => ({ ...state, consent, isBannerVisible: false }));
+            setState((state) => ({ ...state, consent, isBannerVisible: false, isDetailsVisible: false }));
             updateServices(options, consent, state.hash);
         },
         [options, state.hash]
@@ -45,11 +46,17 @@ export function useConsentState(options: ConsentOptions) {
         setState((state) => ({ ...state, isBannerVisible: !state.isBannerVisible }));
     }, []);
 
+    const toggleDetails = useCallback(() => {
+        setState((state) => ({ ...state, isDetailsVisible: !state.isDetailsVisible }));
+    }, []);
+
     return {
         consent: state.consent,
         hasConsent,
         isBannerVisible: state.isBannerVisible,
+        isDetailsVisible: state.isDetailsVisible,
         toggleBanner,
+        toggleDetails,
         setConsent,
     };
 }

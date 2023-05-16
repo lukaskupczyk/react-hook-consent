@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
 import { Consent } from '../Context';
 import { useConsent } from '../useConsent';
 
@@ -6,9 +6,9 @@ export function useConsentBannerActions() {
     const {
         setConsent,
         options: { services },
+        isDetailsVisible,
+        toggleDetails,
     } = useConsent();
-
-    const [showDetails, setShowDetails] = useState(false);
 
     const onApprove = useCallback(
         (approved?: Consent[]) => {
@@ -22,8 +22,8 @@ export function useConsentBannerActions() {
     }, [setConsent]);
 
     const onDetailsToggle = useCallback(() => {
-        setShowDetails((details) => !details);
+        toggleDetails();
     }, []);
 
-    return { onDecline, onApprove, onDetailsToggle, isDetailsVisible: showDetails };
+    return { onDecline, onApprove, onDetailsToggle, isDetailsVisible: isDetailsVisible };
 }

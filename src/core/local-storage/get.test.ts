@@ -13,13 +13,13 @@ describe('getFromLocalStorage', () => {
 
         const result = getFromLocalStorage(hash);
 
-        expect(result).toEqual({ consent, isBannerVisible: false });
+        expect(result).toEqual({ consent, isBannerVisible: false, isDetailsVisible: false });
     });
 
     test('should return the correct data when local storage is empty', () => {
         const result = getFromLocalStorage('abc123');
 
-        expect(result).toEqual({ consent: [], isBannerVisible: true });
+        expect(result).toEqual({ consent: [], isBannerVisible: true, isDetailsVisible: false });
     });
 
     test('should return the correct data when hash is different', () => {
@@ -27,6 +27,6 @@ describe('getFromLocalStorage', () => {
 
         const result = getFromLocalStorage('abc123');
 
-        expect(result).toEqual({ consent: [], isBannerVisible: true });
+        expect(result).toEqual({ consent: [], isBannerVisible: true, isDetailsVisible: false });
     });
 });
