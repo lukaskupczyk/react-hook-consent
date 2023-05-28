@@ -8,6 +8,7 @@ const options = {
         { id: 'service2', name: 'Service 2' },
     ],
 };
+
 const mockSetConsent = jest.fn();
 
 jest.mock('../useConsent', () => {
@@ -55,23 +56,5 @@ describe('useConsentBannerActions', () => {
         });
 
         expect(mockSetConsent).toHaveBeenCalledWith([]);
-    });
-
-    it('should toggle showDetails state when onDetailsToggle is called', () => {
-        const { result } = renderHook(() => useConsentBannerActions(), {
-            wrapper: ({ children }) => <ConsentProvider options={options}>{children}</ConsentProvider>,
-        });
-
-        expect(result.current.isDetailsVisible).toBe(false);
-
-        act(() => {
-            result.current.onDetailsToggle();
-        });
-        expect(result.current.isDetailsVisible).toBe(true);
-
-        act(() => {
-            result.current.onDetailsToggle();
-        });
-        expect(result.current.isDetailsVisible).toBe(false);
     });
 });

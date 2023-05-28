@@ -22,9 +22,11 @@ type ConsentBannerProps = {
 export function ConsentBanner({ children, settings, approve, decline }: ConsentBannerProps) {
     const {
         isBannerVisible,
+        isDetailsVisible,
+        toggleDetails,
         options: { theme },
     } = useConsent();
-    const { onDecline, onApprove, onDetailsToggle, isDetailsVisible } = useConsentBannerActions();
+    const { onDecline, onApprove } = useConsentBannerActions();
 
     return (
         <>
@@ -42,7 +44,7 @@ export function ConsentBanner({ children, settings, approve, decline }: ConsentB
                             )}
                         </div>
                         {settings?.hidden ? null : (
-                            <button className="rhc-banner__content__secondary" onClick={onDetailsToggle}>
+                            <button className="rhc-banner__content__secondary" onClick={toggleDetails}>
                                 {settings?.label ? settings.label : <>Settings</>}
                             </button>
                         )}
@@ -58,7 +60,7 @@ export function ConsentBanner({ children, settings, approve, decline }: ConsentB
                 </div>
             )}
 
-            {isDetailsVisible && <ConsentBannerSettings onToggle={onDetailsToggle} modal={settings?.modal} />}
+            {isDetailsVisible && <ConsentBannerSettings onToggle={toggleDetails} modal={settings?.modal} />}
         </>
     );
 }
