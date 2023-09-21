@@ -82,14 +82,14 @@ import { ConsentProvider } from 'react-hook-consent';
 
 The `services` array can be configured as follows:
 
-| Name      | Type                                | Required | Description                                                         |
-| --------- | ----------------------------------- | -------- | ------------------------------------------------------------------- |
-| id        | string                              | yes      | A unique id for the service, e.g. 'myid'                            |
-| name      | string                              | yes      | The name of the service, e.g. 'My Service'                          |
-| name      | string                              |          | The description of the service, e.g. 'My ID is a tracking service.' |
-| scripts   | Array<ScriptExternal \| ScriptCode> |          | External script or code to load upon consent                        |
-| cookies   | Cookie[]                            |          | Configuration of cookies to delete them upon decline                |
-| mandatory | boolean                             |          | If true, the service is mandatory and cannot be declined            |
+| Name        | Type                                | Required | Description                                                         |
+| ----------- | ----------------------------------- | -------- | ------------------------------------------------------------------- |
+| id          | string                              | yes      | A unique id for the service, e.g. 'myid'                            |
+| name        | string                              | yes      | The name of the service, e.g. 'My Service'                          |
+| description | string                              |          | The description of the service, e.g. 'My ID is a tracking service.' |
+| scripts     | Array<ScriptExternal \| ScriptCode> |          | External script or code to load upon consent                        |
+| cookies     | Cookie[]                            |          | Configuration of cookies to delete them upon decline                |
+| mandatory   | boolean                             |          | If true, the service is mandatory and cannot be declined            |
 
 `ScriptExternal` has the following options:
 
