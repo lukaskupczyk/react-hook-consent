@@ -28,6 +28,7 @@ const consentOptions: ConsentOptions = {
             mandatory: true,
         },
     ],
+    // customHash: 'my-custom-hash',
 };
 
 export default function App({ Component, pageProps }: AppProps) {

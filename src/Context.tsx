@@ -16,6 +16,7 @@ export type ConsentOptionsService = {
 
 export type ConsentOptions = {
     services: ConsentOptionsService[];
+    customHash?: string;
     theme?: Theme;
 };
 

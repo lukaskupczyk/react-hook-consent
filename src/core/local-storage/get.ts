@@ -13,10 +13,9 @@ export function getFromLocalStorage(hash: string) {
     const { consent, hash: storedHash } = JSON.parse(item) as StoredState;
 
     let isBannerVisible = false;
-    let isDetailsVisible = false;
     if (storedHash !== hash) {
         isBannerVisible = true;
     }
 
-    return { consent: consent && consent.length > 0 ? consent : [], isBannerVisible, isDetailsVisible };
+    return { consent: consent && consent.length > 0 ? consent : [], isBannerVisible, isDetailsVisible: false };
 }

@@ -65,6 +65,7 @@ import { ConsentProvider } from 'react-hook-consent';
                 mandatory: true,
             },
         ],
+        // customHash: 'my-custom-hash', // optional, e.g. when changing the options based on language
         theme: 'light',
     }}
 >
@@ -75,10 +76,11 @@ import { ConsentProvider } from 'react-hook-consent';
 
 #### Options Prop
 
-| Name     | Type                    | Required | Description                                     | Default |
-| -------- | ----------------------- | -------- | ----------------------------------------------- | ------- |
-| services | ConsentOptionsService[] | yes      | The configuration of the services to be covered |         |
-| theme    | Theme                   |          | Configuration of light or dark theme            | dark    |
+| Name       | Type                    | Required | Description                                          | Default |
+| ---------- | ----------------------- | -------- | ---------------------------------------------------- | ------- |
+| services   | ConsentOptionsService[] | yes      | The configuration of the services to be covered      |         |
+| customHash | string                  |          | A custom hash to detect if options have been updated |         |
+| theme      | Theme                   |          | Configuration of light or dark theme                 | dark    |
 
 The `services` array can be configured as follows:
 
