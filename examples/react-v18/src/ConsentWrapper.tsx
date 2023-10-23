@@ -9,7 +9,7 @@ const consentOptions: ConsentOptions = {
     services: [
         {
             id: 'myid',
-            name: 'MyName',
+            name: 'External Script and inline code',
             description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam.',
             scripts: [
                 { id: 'external-script', src: 'https://myscript.com/script.js' },
@@ -18,25 +18,25 @@ const consentOptions: ConsentOptions = {
         },
         {
             id: 'myid2',
-            name: 'MyName 2',
+            name: 'Cookie',
             cookies: [{ pattern: 'example_cookie' }],
         },
         {
             id: 'myid3',
-            name: 'MyName 2',
+            name: 'External Script and inline code',
             description:
                 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam.',
             scripts: [{ id: 'external-script', src: 'https://myscript2.com/script.js' }],
         },
         {
             id: 'myid4',
-            name: 'MyName 2',
-            scripts: [{ id: 'external-script', src: 'https://myscript2.com/script.js' }],
+            name: 'Local Storage',
+            localStorage: ['example_local_storage'],
         },
         {
             id: 'myid5',
-            name: 'MyName 2',
-            scripts: [{ id: 'external-script', src: 'https://myscript2.com/script.js' }],
+            name: 'Session Storage',
+            sessionStorage: ['example_session_storage'],
         },
         {
             id: 'myid6',
