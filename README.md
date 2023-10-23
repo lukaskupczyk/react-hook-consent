@@ -62,6 +62,8 @@ import { ConsentProvider } from 'react-hook-consent';
                     { id: 'inline-code', code: `alert("I am a JavaScript code");` },
                 ],
                 cookies: [{ pattern: 'cookie-name' }],
+                localStorage: ['local-storage-key'],
+                sessionStorage: ['session-storage-key'],
                 mandatory: true,
             },
         ],
