@@ -5,7 +5,7 @@
 
 # react-hook-consent
 
-React consent management solution and banner for cookies and (external) scripts.
+React consent management solution and banner for cookies, local storage, session storage and (external) scripts.
 
 ![react-hook-consent Screenshot](/assets/screenshot.png)
 
@@ -13,7 +13,7 @@ React consent management solution and banner for cookies and (external) scripts.
 
 -   Provides the consent context to components
 -   Loads (external) scripts based on consent state
--   Deletes cookies when consent declined
+-   Deletes cookies, local storage and session storage when consent declined
 -   Hook to retrieve and change the current consent
 -   Optional Banner with detailed settings to approve / decline consent
 -   Persists the selection to local storage
@@ -84,14 +84,16 @@ import { ConsentProvider } from 'react-hook-consent';
 
 The `services` array can be configured as follows:
 
-| Name        | Type                                | Required | Description                                                         |
-| ----------- | ----------------------------------- | -------- | ------------------------------------------------------------------- |
-| id          | string                              | yes      | A unique id for the service, e.g. 'myid'                            |
-| name        | string                              | yes      | The name of the service, e.g. 'My Service'                          |
-| description | string                              |          | The description of the service, e.g. 'My ID is a tracking service.' |
-| scripts     | Array<ScriptExternal \| ScriptCode> |          | External script or code to load upon consent                        |
-| cookies     | Cookie[]                            |          | Configuration of cookies to delete them upon decline                |
-| mandatory   | boolean                             |          | If true, the service is mandatory and cannot be declined            |
+| Name           | Type                                | Required | Description                                                         |
+| -------------- | ----------------------------------- | -------- | ------------------------------------------------------------------- |
+| id             | string                              | yes      | A unique id for the service, e.g. 'myid'                            |
+| name           | string                              | yes      | The name of the service, e.g. 'My Service'                          |
+| description    | string                              |          | The description of the service, e.g. 'My ID is a tracking service.' |
+| scripts        | Array<ScriptExternal \| ScriptCode> |          | External script or code to load upon consent                        |
+| cookies        | Cookie[]                            |          | Configuration of cookies to delete them upon decline                |
+| localStorage   | string[]                            |          | Configuration of local storage to delete them upon decline          |
+| sessionStorage | string[]                            |          | Configuration of session storage to delete them upon decline        |
+| mandatory      | boolean                             |          | If true, the service is mandatory and cannot be declined            |
 
 `ScriptExternal` has the following options:
 

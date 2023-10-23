@@ -11,6 +11,8 @@ export type ConsentOptionsService = {
     description?: string;
     scripts?: Array<ScriptExternal | ScriptCode>;
     cookies?: Array<Cookie>;
+    localStorage?: Array<string>;
+    sessionStorage?: Array<string>;
     mandatory?: boolean;
 };
 
