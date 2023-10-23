@@ -1,8 +1,10 @@
-import type { AppProps } from 'next/app';
-import Link from 'next/link';
+'use client';
+import { Inter } from 'next/font/google';
 import { ConsentBanner, ConsentOptions, ConsentProvider } from 'react-hook-consent';
-import '../styles/globals.css';
+import './globals.css';
 import 'react-hook-consent/dist/styles/style.css';
+
+const inter = Inter({ subsets: ['latin'] });
 
 const consentOptions: ConsentOptions = {
     services: [
@@ -31,14 +33,18 @@ const consentOptions: ConsentOptions = {
     // customHash: 'my-custom-hash',
 };
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <ConsentProvider options={consentOptions}>
-            <Component {...pageProps} />
-            <ConsentBanner
-                decline={{ hidden: false, label: 'Decline' }}
-                settings={{ modal: { decline: { hidden: true } } }}
-            />
+            <html lang="en">
+                <body className={inter.className}>
+                    {children}
+                    <ConsentBanner
+                        decline={{ hidden: false, label: 'Decline' }}
+                        settings={{ modal: { decline: { hidden: true } } }}
+                    />
+                </body>
+            </html>
         </ConsentProvider>
     );
 }
