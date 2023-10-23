@@ -13,7 +13,7 @@ export function useConsentState(options: ConsentOptions) {
         consent: [],
         isBannerVisible: false,
         isDetailsVisible: false,
-        hash: hash(options),
+        hash: options.customHash ?? hash(options),
     });
 
     useEffect(() => {
