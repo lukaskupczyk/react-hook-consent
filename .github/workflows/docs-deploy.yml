@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: gh-pages-build
 
 on:
   push:
@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   deploy:
-    name: Deploy to GitHub Pages
+    name: gh-pages-build
     runs-on: ubuntu-latest
     defaults:
       run:
