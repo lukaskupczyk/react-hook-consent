@@ -2,46 +2,90 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# Intro
 
-Let's discover **Docusaurus in less than 5 minutes**.
+Learn to set up a fully working GDPR compliant consent solution.
 
-## Getting Started
+## Installation
 
-Get started by **creating a new site**.
-
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
-
-### What you'll need
-
-- [Node.js](https://nodejs.org/en/download/) version 18.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
-
-## Generate a new site
-
-Generate a new Docusaurus site using the **classic template**.
-
-The classic template will automatically be added to your project after you run the command:
+Install the package with:
 
 ```bash
-npm init docusaurus@latest my-website classic
+yarn add react-hook-consent
+
+# or
+
+npm install react-hook-consent
 ```
 
 You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
 
-The command also installs all necessary dependencies you need to run Docusaurus.
+The command also installs all necessary dependencies you need to run React Hook Consent.
 
-## Start your site
+## Basic usage
 
-Run the development server:
+### Provider
 
-```bash
-cd my-website
-npm run start
+Wrap the application in the `ConsentProvider`. Provide settings via the `options` prop.
+
+```typescript
+/*
+ * index.tsx
+ */
+
+import { ConsentProvider } from 'react-hook-consent';
+
+// ...
+<ConsentProvider
+    options={{
+        services: [
+            {
+                id: 'myid',
+                name: 'MyName',
+                scripts: [
+                    { id: 'external-script', src: 'https://myscript.com/script.js' },
+                    { id: 'inline-code', code: `alert("I am a JavaScript code");` },
+                ],
+                cookies: [{ pattern: 'cookie-name' }],
+                localStorage: ['local-storage-key'],
+                sessionStorage: ['session-storage-key'],
+                mandatory: true,
+            },
+        ],
+        // customHash: 'my-custom-hash', // optional, e.g. when changing the options based on language
+        theme: 'light',
+    }}
+>
+    <App />
+</ConsentProvider>;
+// ...
 ```
 
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
+### Banner
 
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
+Optionally use the banner component to render a banner to show a consent dialogue.
 
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+```typescript
+/*
+ * index.tsx
+ */
+
+import { ConsentBanner } from 'react-hook-consent';
+
+// styling
+import 'react-hook-consent/dist/styles/style.css';
+
+// ...
+<App />
+<ConsentBanner
+    settings={{ hidden: false, label: 'More', modal: { title: 'Modal title' } }}
+    decline={{ hidden: false, label: 'No' }}
+    approve={{ label: 'Yes' }}
+>
+     <>
+        Can we use cookies and external services according to our <a href="test">privacy policy</a> to
+        improve the browsing experience?
+    </>
+</ConsentBanner>
+// ...
+```

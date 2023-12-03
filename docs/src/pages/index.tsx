@@ -1,38 +1,17 @@
-import clsx from 'clsx';
-import Link from '@docusaurus/Link';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
-import HomepageFeatures from '@site/src/components/HomepageFeatures';
-import Heading from '@theme/Heading';
+import 'react-hook-consent/dist/styles/style.css';
+import { HomepageDemo } from '../components/homepage/Demo';
+import { HomepageHero } from '../components/homepage/Hero';
+import { HomepageFeatures } from '../components/homepage/features';
 
-import styles from './index.module.css';
-
-function HomepageHeader() {
-    const { siteConfig } = useDocusaurusContext();
-    return (
-        <header className={clsx('hero hero--primary', styles.heroBanner)}>
-            <div className="container">
-                <Heading as="h1" className="hero__title">
-                    {siteConfig.title}
-                </Heading>
-                <p className="hero__subtitle">{siteConfig.tagline}</p>
-                <div className={styles.buttons}>
-                    <Link className="button button--secondary button--lg" to="/docs/intro">
-                        Getting Started
-                    </Link>
-                </div>
-            </div>
-        </header>
-    );
-}
-
-export default function Home(): JSX.Element {
+export default function Homepage() {
     return (
         <Layout title={`Welcome`} description="React Consent Management solution.">
-            <HomepageHeader />
-            {/* <main>
+            <HomepageHero />
+            <main>
                 <HomepageFeatures />
-            </main> */}
+            </main>
+            <HomepageDemo />
         </Layout>
     );
 }

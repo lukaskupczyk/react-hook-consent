@@ -102,7 +102,7 @@ The `services` array can be configured as follows:
 | Name | Type   | Required | Description                                                   |
 | ---- | ------ | -------- | ------------------------------------------------------------- |
 | id   | string | yes      | A unique id for the script, e.g. 'myscript'                   |
-| src  | string | yes      | The link to the script, e.g. 'https://myscript.com/script.js' |
+| src  | string | yes      | The link to the script, e.g. `https://myscript.com/script.js` |
 
 `ScriptCode` has the following options:
 
@@ -135,7 +135,7 @@ import 'react-hook-consent/dist/styles/style.css';
 <App />
 <ConsentBanner
     settings={{ hidden: false, label: 'More', modal: { title: 'Modal title' } }}
-    decline={{ show: true, label: 'No' }}
+    decline={{ hidden: false, label: 'No' }}
     approve={{ label: 'Yes' }}
 >
      <>

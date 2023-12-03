@@ -3,7 +3,7 @@ import { useConsent } from '../useConsent';
 import { ConsentBannerSettings, ConsentBannerSettingsModal } from './settings/Settings';
 import { useConsentBannerActions } from './useConsentBannerActions';
 
-type ConsentBannerProps = {
+export type ConsentBannerProps = {
     children?: ReactNode;
     settings?: {
         hidden?: boolean;
