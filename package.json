@@ -1,6 +1,6 @@
 {
     "name": "react-hook-consent",
-    "version": "3.5.1",
+    "version": "3.5.2",
     "description": "React consent management solution and banner for cookies and (external) scripts.",
     "scripts": {
         "build": "node esbuild.config.mjs production",
