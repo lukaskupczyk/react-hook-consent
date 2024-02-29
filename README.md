@@ -64,7 +64,7 @@ import 'react-hook-consent/dist/styles/style.css';
                     { id: 'external-script', src: 'https://myscript.com/script.js' },
                     { id: 'inline-code', code: `alert("I am a JavaScript code");` },
                 ],
-                cookies: [{ pattern: 'cookie-name' }],
+                cookies: [{ pattern: 'cookie-name' }, { pattern: /regex/ }],
                 localStorage: ['local-storage-key'],
                 sessionStorage: ['session-storage-key'],
                 mandatory: true,
